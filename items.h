@@ -1,4 +1,4 @@
-enum lightState{OFF,ON,DISCONNECTED};
+enum lightState{OFF,ON,DISCONNECTED,UNKNOWN};
 
 struct light
 {

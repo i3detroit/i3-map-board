@@ -10,14 +10,14 @@
 #define SWITCH_PIN_B			12 //nodemcu D6
 #define SWITCH_PIN_C			14 //nodemcu D5
 
-#define NUM_PIXELS   32
+#define NUM_PIXELS   50
 
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUM_PIXELS, PIXEL_PIN, NEO_GRB + NEO_KHZ800);
 
 // define some colors for the neopixels
 uint32_t red = pixels.Color(200,0,0);
 uint32_t blue = pixels.Color(0,0,200);
-uint32_t purple = pixels.Color(200,0,200);
+uint32_t purple = pixels.Color(200,0,150);
 uint32_t green = pixels.Color(0,200,0);
 uint32_t yellow = pixels.Color(200,200,0);
 uint32_t off = pixels.Color(0,0,0);
@@ -49,7 +49,8 @@ void callback(char* topic, byte* payload, unsigned int length, PubSubClient *cli
   for (int j = 0; j < numLights; j++) {
   	Serial.println(topic);
   	Serial.println(lights[j]->mqttTopic);
-  	if (strcmp(topic, lights[j]->mqttTopic) == 0){
+  	sprintf(buf,"stat%s",lights[j]->mqttTopic);
+  	if (strcmp(topic, buf) == 0){
   		Serial.print("yay");
 		  if((char)payload[1] == 'N') {
 		    lights[j]->state = ON;
@@ -69,10 +70,11 @@ void connectSuccess(PubSubClient* client, char* ip) {
   sprintf(buf, "{\"Hostname\":\"%s\", \"IPaddress\":\"%s\"}", host_name, ip);
   client->publish("tele/i3/inside/commons/map-board/INFO2", buf);
   for (int j = 0; j < numLights; j++) {
-  	sprintf(buf,"stat/%s",lights[j]->mqttTopic);
+  	sprintf(buf,"stat%s",lights[j]->mqttTopic);
 		client->subscribe(buf);
-		sprintf(buf,"cmnd/%s",lights[j]->mqttTopic);
+		sprintf(buf,"cmnd%s",lights[j]->mqttTopic);
 		client->publish(buf, "");
+		loop_mqtt();
   }
 }
 
@@ -80,7 +82,6 @@ void setup() {
   //start serial connection
   Serial.begin(115200);
   setup_mqtt(connectedLoop, callback, connectSuccess, ssid, password, mqtt_server, mqtt_port, host_name);
-  
   pixels.begin(); // This initializes the NeoPixel library.
   for (int j=0; j < NUM_PIXELS; j++) {
     pixels.setPixelColor(j,purple);
@@ -90,6 +91,10 @@ void setup() {
   for (int j=0; j < NUM_PIXELS; j++) {
      pixels.setPixelColor(j,off);
   }
+  pixels.setPixelColor(1,green);
+  pixels.setPixelColor(2,red);
+  pixels.setPixelColor(3,blue);
+  pixels.setPixelColor(4,purple);
   pixels.show();
 }
 
@@ -106,8 +111,11 @@ void loop() {
 		else if (lights[j]->state == OFF) {
 			ledOff(*lights[j]);
 		}
-		else {
+		else if (lights[j]->state == DISCONNECTED) {
 			ledDisconnected(*lights[j]);
+		}
+		else if (lights[j]->state == UNKNOWN) {
+			ledUnknown(*lights[j]);
 		}
 	}
   pixels.show();
@@ -115,11 +123,14 @@ void loop() {
 }
 
 void ledOn(light device) {
-	pixels.setPixelColor(device.ledNum,blue);
+	pixels.setPixelColor(device.ledNum,green);
 }
 void ledOff(light device) {
 	pixels.setPixelColor(device.ledNum,red);
 }
 void ledDisconnected(light device) {
-	pixels.setPixelColor(device.ledNum,yellow);
+	pixels.setPixelColor(device.ledNum,blue);
+}
+void ledUnknown(light device) {
+	pixels.setPixelColor(device.ledNum,purple);
 }
