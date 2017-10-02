@@ -39,42 +39,36 @@ const int mqtt_port = 1883;
 int numLights = ARRAY_SIZE(lights);
 
 void callback(char* topic, byte* payload, unsigned int length, PubSubClient *client) {
-  // Serial.println("Message arrived [");
-  // Serial.println(topic);
-  // Serial.println("] ");
-  // for (int i = 0; i < length; i++) {
-    // Serial.print((char)payload[i]);
-  // }
-  // Serial.println();
-  uint32_t c;
-  for (int j = 0; j < numLights; j++) {
-  	// Serial.println(topic);
-  	// Serial.println(lights[j]->mqttTopic);
-  	sprintf(bufA,"stat%sPOWER",lights[j]->mqttTopic);
-    sprintf(bufB,"tele%sLWT",lights[j]->mqttTopic);
-  	if (strcmp(topic, bufA) == 0){
-  		// Serial.print("yay");
-		  if((char)payload[1] == 'N') {
-		    lights[j]->state = ON;
-		  } else if ((char)payload[1] == 'F') {
-		    lights[j]->state = OFF;
-		  } else {
-		    // Serial.println("NOT A THING FUCK");
-		    lights[j]->state = DISCONNECTED;
-		  }
-		}
-    else if (strcmp(topic, bufB) == 0){
-      // Serial.print("yay");
-      if((char)payload[1] == 'n') {
-        lights[j]->state = ON;
-      } else if ((char)payload[1] == 'f') {
-        lights[j]->state = DISCONNECTED;
-      } else {
-        // Serial.println("NOT A THING FUCK");
-        lights[j]->state = UNKNOWN;
+  //Check if stat/.../POWER update
+  if ((char)topic[0] == 's') {
+    for (int j = 0; j < numLights; j++) {
+      sprintf(bufA,"stat%sPOWER",lights[j]->mqttTopic);
+      if (strcmp(topic, bufA) == 0){
+        if((char)payload[1] == 'N') {
+          lights[j]->state = ON;
+        } else if ((char)payload[1] == 'F') {
+          lights[j]->state = OFF;
+        } else {
+          lights[j]->state = UNKNOWN;
+        }
       }
     }
-	}
+  }
+  //Check if tele/.../LWT update
+  else if ((char)topic[0] == 't') {
+    for (int j = 0; j < numLights; j++) {
+      sprintf(bufB,"tele%sLWT",lights[j]->mqttTopic);
+      if (strcmp(topic, bufB) == 0){
+        if((char)payload[1] == 'n') {
+          lights[j]->state = ON;
+        } else if ((char)payload[1] == 'f') {
+          lights[j]->state = DISCONNECTED;
+        } else {
+          lights[j]->state = UNKNOWN;
+        }
+      }
+    }
+  }
 }
 
 void connectSuccess(PubSubClient* client, char* ip) {
@@ -82,15 +76,6 @@ void connectSuccess(PubSubClient* client, char* ip) {
   //subscribe and shit here
   sprintf(bufA, "{\"Hostname\":\"%s\", \"IPaddress\":\"%s\"}", host_name, ip);
   client->publish("tele/i3/inside/commons/map-board/INFO2", bufA);
-  // for (int j = 0; j < numLights; j++) {
-  // 	sprintf(bufA,"stat%sPOWER",lights[j]->mqttTopic);
-		// client->subscribe(bufA);
-  //   sprintf(bufA,"tele%sLWT",lights[j]->mqttTopic);
-  //   client->subscribe(bufA);
-		// sprintf(bufA,"cmnd%sPOWER",lights[j]->mqttTopic);
-		// client->publish(bufA, " ");
-		// loop_mqtt();
-  // }
   client->subscribe("stat/i3/commons/lights/+/POWER");
   client->subscribe("tele/i3/commons/lights/+/LWT");
   client->publish("cmnd/i3/commons/lights/all/POWER", " ");
