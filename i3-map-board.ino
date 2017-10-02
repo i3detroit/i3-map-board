@@ -28,8 +28,7 @@ int i = 0;
 int j = 0;
 int k = 0;
 
-char bufA[1024];
-char bufB[1024];
+char buf[1024];
 const char* host_name = "i3_map_board";
 const char* ssid = "i3detroit-wpa";
 const char* password = "i3detroit";
@@ -42,8 +41,8 @@ void callback(char* topic, byte* payload, unsigned int length, PubSubClient *cli
   //Check if stat/.../POWER update
   if ((char)topic[0] == 's') {
     for (int j = 0; j < numLights; j++) {
-      sprintf(bufA,"stat%sPOWER",lights[j]->mqttTopic);
-      if (strcmp(topic, bufA) == 0){
+      sprintf(buf,"stat%sPOWER",lights[j]->mqttTopic);
+      if (strcmp(topic, buf) == 0){
         if((char)payload[1] == 'N') {
           lights[j]->state = ON;
         } else if ((char)payload[1] == 'F') {
@@ -57,8 +56,8 @@ void callback(char* topic, byte* payload, unsigned int length, PubSubClient *cli
   //Check if tele/.../LWT update
   else if ((char)topic[0] == 't') {
     for (int j = 0; j < numLights; j++) {
-      sprintf(bufB,"tele%sLWT",lights[j]->mqttTopic);
-      if (strcmp(topic, bufB) == 0){
+      sprintf(buf,"tele%sLWT",lights[j]->mqttTopic);
+      if (strcmp(topic, buf) == 0){
         if((char)payload[1] == 'n') {
           lights[j]->state = ON;
         } else if ((char)payload[1] == 'f') {
@@ -73,8 +72,8 @@ void callback(char* topic, byte* payload, unsigned int length, PubSubClient *cli
 
 void connectSuccess(PubSubClient* client, char* ip) {
   //Serial.println("connected");
-  sprintf(bufA, "{\"Hostname\":\"%s\", \"IPaddress\":\"%s\"}", host_name, ip);
-  client->publish("tele/i3/inside/commons/map-board/INFO2", bufA);
+  sprintf(buf, "{\"Hostname\":\"%s\", \"IPaddress\":\"%s\"}", host_name, ip);
+  client->publish("tele/i3/inside/commons/map-board/INFO2", buf);
   client->subscribe("stat/i3/commons/lights/+/POWER");
   client->subscribe("tele/i3/commons/lights/+/LWT");
   client->publish("cmnd/i3/commons/lights/all/POWER", " ");
@@ -102,7 +101,6 @@ void setup() {
 }
 
 void connectedLoop(PubSubClient* client) {
-
 }
 
 void loop() {
@@ -117,14 +115,11 @@ void loop() {
 void setLED(light device) {
   if (device.state == ON) {
     pixels.setPixelColor(device.ledNum,ledGreen);
-  }
-  else if (device.state == OFF) {
+  } else if (device.state == OFF) {
     pixels.setPixelColor(device.ledNum,ledRed);
-  }
-  else if (device.state == DISCONNECTED) {
+  } else if (device.state == DISCONNECTED) {
     pixels.setPixelColor(device.ledNum,ledBlue);
-  }
-  else if (device.state == UNKNOWN) {
+  } else if (device.state == UNKNOWN) {
     pixels.setPixelColor(device.ledNum,ledPurple);
   }
 }
