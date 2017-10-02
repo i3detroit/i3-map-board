@@ -15,12 +15,12 @@
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUM_PIXELS, PIXEL_PIN, NEO_GRB + NEO_KHZ800);
 
 // define some colors for the neopixels
-uint32_t red = pixels.Color(15,0,0);
-uint32_t blue = pixels.Color(0,0,15);
-uint32_t purple = pixels.Color(15,0,10);
-uint32_t green = pixels.Color(0,15,0);
-uint32_t yellow = pixels.Color(15,15,0);
-uint32_t off = pixels.Color(0,0,0);
+int brightness = 2; // easily scale led brightness from 0 to 10
+uint32_t ledRed = pixels.Color(25*brightness,0,0);
+uint32_t ledBlue = pixels.Color(0,0,25*brightness);
+uint32_t ledPurple = pixels.Color(25*brightness,0,18*brightness);
+uint32_t ledGreen = pixels.Color(0,25*brightness,0);
+uint32_t ledOff = pixels.Color(0,0,0);
 
 int delayVal = 50;
 
@@ -72,8 +72,7 @@ void callback(char* topic, byte* payload, unsigned int length, PubSubClient *cli
 }
 
 void connectSuccess(PubSubClient* client, char* ip) {
-  //Serial.println("win");
-  //subscribe and shit here
+  //Serial.println("connected");
   sprintf(bufA, "{\"Hostname\":\"%s\", \"IPaddress\":\"%s\"}", host_name, ip);
   client->publish("tele/i3/inside/commons/map-board/INFO2", bufA);
   client->subscribe("stat/i3/commons/lights/+/POWER");
@@ -85,19 +84,20 @@ void setup() {
   //start serial connection
   //Serial.begin(115200);
   setup_mqtt(connectedLoop, callback, connectSuccess, ssid, password, mqtt_server, mqtt_port, host_name);
-  pixels.begin(); // This initializes the NeoPixel library.
+  pixels.begin();
   for (int j=0; j < NUM_PIXELS; j++) {
-    pixels.setPixelColor(j,purple);
+    pixels.setPixelColor(j,ledPurple);
   }
   pixels.show();
   delay(2000);
   for (int j=0; j < NUM_PIXELS; j++) {
-     pixels.setPixelColor(j,off);
+     pixels.setPixelColor(j,ledOff);
   }
-  pixels.setPixelColor(1,green);
-  pixels.setPixelColor(2,red);
-  pixels.setPixelColor(3,blue);
-  pixels.setPixelColor(4,purple);
+  // Map key
+  pixels.setPixelColor(1,ledGreen);
+  pixels.setPixelColor(2,ledRed);
+  pixels.setPixelColor(3,ledBlue);
+  pixels.setPixelColor(4,ledPurple);
   pixels.show();
 }
 
@@ -108,32 +108,23 @@ void connectedLoop(PubSubClient* client) {
 void loop() {
 	loop_mqtt();
 	for (int j = 0; j < numLights; j++) {
-		if (lights[j]->state == ON) {
-			ledOn(*lights[j]);
-		}
-		else if (lights[j]->state == OFF) {
-			ledOff(*lights[j]);
-		}
-		else if (lights[j]->state == DISCONNECTED) {
-			ledDisconnected(*lights[j]);
-		}
-		else if (lights[j]->state == UNKNOWN) {
-			ledUnknown(*lights[j]);
-		}
+		setLED(*lights[j]);
 	}
   pixels.show();
   delay(delayVal);
 }
 
-void ledOn(light device) {
-	pixels.setPixelColor(device.ledNum,green);
-}
-void ledOff(light device) {
-	pixels.setPixelColor(device.ledNum,red);
-}
-void ledDisconnected(light device) {
-	pixels.setPixelColor(device.ledNum,blue);
-}
-void ledUnknown(light device) {
-	pixels.setPixelColor(device.ledNum,purple);
+void setLED(light device) {
+  if (device.state == ON) {
+    pixels.setPixelColor(device.ledNum,ledGreen);
+  }
+  else if (device.state == OFF) {
+    pixels.setPixelColor(device.ledNum,ledRed);
+  }
+  else if (device.state == DISCONNECTED) {
+    pixels.setPixelColor(device.ledNum,ledBlue);
+  }
+  else if (device.state == UNKNOWN) {
+    pixels.setPixelColor(device.ledNum,ledPurple);
+  }
 }
