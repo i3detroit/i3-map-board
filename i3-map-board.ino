@@ -5,6 +5,7 @@
 
 #define ARRAY_SIZE(x) (sizeof(x)/sizeof(x[0]))
 
+#define BUTTON_PIN        0  //nodemcu D3
 #define PIXEL_PIN					13 //nodemcu D7
 #define SWITCH_PIN_A			4  //nodemcu D0
 #define SWITCH_PIN_B			12 //nodemcu D6
@@ -15,12 +16,21 @@
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUM_PIXELS, PIXEL_PIN, NEO_GRB + NEO_KHZ800);
 
 // define some colors for the neopixels
-int brightness = 2; // easily scale led brightness from 0 to 10
+int brightness = 3; // scale led brightness from 0 to 10
 uint32_t ledRed = pixels.Color(25*brightness,0,0);
 uint32_t ledBlue = pixels.Color(0,0,25*brightness);
 uint32_t ledPurple = pixels.Color(25*brightness,0,18*brightness);
 uint32_t ledGreen = pixels.Color(0,25*brightness,0);
 uint32_t ledOff = pixels.Color(0,0,0);
+//colorblind friendly colors
+uint32_t ledCBBlue = pixels.Color(0,9*brightness,20*brightness);
+uint32_t ledCBPink = pixels.Color(25*brightness,12*brightness,25*brightness);
+uint32_t ledCBGreen = pixels.Color(1*brightness,18*brightness,9*brightness);
+uint32_t ledCBYellow = pixels.Color(24*brightness,24*brightness,5*brightness);
+
+uint32_t palette[2][4] = {{ledCBGreen,ledCBPink,ledCBBlue,ledCBYellow},{ledGreen,ledRed,ledBlue,ledPurple}};
+
+int colorBlind = 0;
 
 int delayVal = 50;
 
@@ -80,6 +90,7 @@ void connectSuccess(PubSubClient* client, char* ip) {
 }
 
 void setup() {
+  pinMode(BUTTON_PIN, INPUT);
   //start serial connection
   //Serial.begin(115200);
   setup_mqtt(connectedLoop, callback, connectSuccess, ssid, password, mqtt_server, mqtt_port, host_name);
@@ -93,17 +104,17 @@ void setup() {
      pixels.setPixelColor(j,ledOff);
   }
   // Map key
-  pixels.setPixelColor(1,ledGreen);
-  pixels.setPixelColor(2,ledRed);
-  pixels.setPixelColor(3,ledBlue);
-  pixels.setPixelColor(4,ledPurple);
-  pixels.show();
 }
 
 void connectedLoop(PubSubClient* client) {
 }
 
 void loop() {
+  colorBlind = digitalRead(BUTTON_PIN);
+  pixels.setPixelColor(1,palette[colorBlind][0]);
+  pixels.setPixelColor(2,palette[colorBlind][1]);
+  pixels.setPixelColor(3,palette[colorBlind][2]);
+  pixels.setPixelColor(4,palette[colorBlind][3]);
 	loop_mqtt();
 	for (int j = 0; j < numLights; j++) {
 		setLED(*lights[j]);
@@ -112,14 +123,25 @@ void loop() {
   delay(delayVal);
 }
 
+// void setLED(light device) {
+//   if (device.state == ON) {
+//     pixels.setPixelColor(device.ledNum,ledGreen);
+//   } else if (device.state == OFF) {
+//     pixels.setPixelColor(device.ledNum,ledRed);
+//   } else if (device.state == DISCONNECTED) {
+//     pixels.setPixelColor(device.ledNum,ledBlue);
+//   } else if (device.state == UNKNOWN) {
+//     pixels.setPixelColor(device.ledNum,ledPurple);
+//   }
+// }
 void setLED(light device) {
   if (device.state == ON) {
-    pixels.setPixelColor(device.ledNum,ledGreen);
+    pixels.setPixelColor(device.ledNum,palette[colorBlind][0]);
   } else if (device.state == OFF) {
-    pixels.setPixelColor(device.ledNum,ledRed);
+    pixels.setPixelColor(device.ledNum,palette[colorBlind][1]);
   } else if (device.state == DISCONNECTED) {
-    pixels.setPixelColor(device.ledNum,ledBlue);
+    pixels.setPixelColor(device.ledNum,palette[colorBlind][2]);
   } else if (device.state == UNKNOWN) {
-    pixels.setPixelColor(device.ledNum,ledPurple);
+    pixels.setPixelColor(device.ledNum,palette[colorBlind][3]);
   }
 }
