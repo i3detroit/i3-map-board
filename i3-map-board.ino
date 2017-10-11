@@ -84,10 +84,60 @@ void connectSuccess(PubSubClient* client, char* ip) {
   //Serial.println("connected");
   sprintf(buf, "{\"Hostname\":\"%s\", \"IPaddress\":\"%s\"}", host_name, ip);
   client->publish("tele/i3/inside/commons/map-board/INFO2", buf);
+  loop_mqtt();
+
   client->subscribe("stat/i3/commons/lights/+/POWER");
+  loop_mqtt();
+  client->subscribe("stat/i3/inside/commons/east-ceiling-fans/POWER");
+  loop_mqtt();
+  client->subscribe("stat/i3/machineShop/fans/ceilingFan/POWER");
+  loop_mqtt();
+  // client->subscribe("stat/i3/laserZone/ceilingFan/POWER");
+  // loop_mqtt();
+  // client->subscribe("stat/i3/laserZone/ventFan/POWER");
+  // loop_mqtt();
+  // client->subscribe("stat/i3/inside/fablab/vent/POWER");
+  // loop_mqtt();
+  // client->subscribe("stat/i3/inside/office-bathroom/light/POWER");
+  // loop_mqtt();
+  // client->subscribe("stat/i3/inside/commons/bathroom-vent-fan/POWER");
+  // loop_mqtt();
+
   client->subscribe("tele/i3/commons/lights/+/LWT");
+  loop_mqtt();
+  client->subscribe("tele/i3/inside/commons/east-ceiling-fans/LWT");
+  loop_mqtt();
+  client->subscribe("tele/i3/machineShop/fans/ceilingFan/LWT");
+  loop_mqtt();
+  // client->subscribe("tele/i3/laserZone/ceilingFan/LWT");
+  // loop_mqtt();
+  // client->subscribe("tele/i3/laserZone/ventFan/LWT");
+  // loop_mqtt();
+  // client->subscribe("tele/i3/inside/fablab/vent/LWT");
+  // loop_mqtt();
+  // client->subscribe("tele/i3/inside/office-bathroom/light/LWT");
+  // loop_mqtt();
+  // client->subscribe("tele/i3/inside/commons/bathroom-vent-fan/LWT");
+  // loop_mqtt();
+
   client->publish("cmnd/i3/commons/lights/all/POWER", " ");
+  loop_mqtt();
+  client->publish("cmnd/i3/inside/commons/east-ceiling-fans/POWER", " ");
+  loop_mqtt();
+  client->publish("cmnd/i3/machineShop/fans/ceilingFan/POWER", " ");
+  loop_mqtt();
+  // client->publish("cmnd/i3/laserZone/ceilingFan/POWER", " ");
+  // loop_mqtt();
+  // client->publish("cmnd/i3/laserZone/ventFan/POWER", " ");
+  // loop_mqtt();
+  // client->publish("cmnd/i3/inside/fablab/vent/POWER", " ");
+  // loop_mqtt();
+  // client->publish("cmnd/i3/inside/office-bathroom/light/POWER", " ");
+  // loop_mqtt();
+  // client->publish("cmnd/i3/inside/commons/bathroom-vent-fan/POWER", " ");
+  // loop_mqtt();
 }
+
 
 void setup() {
   pinMode(BUTTON_PIN, INPUT);
@@ -111,10 +161,10 @@ void connectedLoop(PubSubClient* client) {
 
 void loop() {
   colorBlind = digitalRead(BUTTON_PIN);
-  pixels.setPixelColor(1,palette[colorBlind][0]);
-  pixels.setPixelColor(2,palette[colorBlind][1]);
-  pixels.setPixelColor(3,palette[colorBlind][2]);
-  pixels.setPixelColor(4,palette[colorBlind][3]);
+  pixels.setPixelColor(0,palette[colorBlind][0]);
+  pixels.setPixelColor(1,palette[colorBlind][1]);
+  pixels.setPixelColor(2,palette[colorBlind][2]);
+  pixels.setPixelColor(3,palette[colorBlind][3]);
 	loop_mqtt();
 	for (int j = 0; j < numLights; j++) {
 		setLED(*lights[j]);
