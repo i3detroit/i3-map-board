@@ -11,7 +11,7 @@
 #define SWITCH_PIN_B			12 //nodemcu D6
 #define SWITCH_PIN_C			14 //nodemcu D5
 
-#define NUM_PIXELS   50
+#define NUM_PIXELS   60
 
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUM_PIXELS, PIXEL_PIN, NEO_GRB + NEO_KHZ800);
 
@@ -22,15 +22,6 @@ uint32_t ledBlue = pixels.Color(0,0,25*brightness);
 uint32_t ledPurple = pixels.Color(25*brightness,0,18*brightness);
 uint32_t ledGreen = pixels.Color(0,25*brightness,0);
 uint32_t ledOff = pixels.Color(0,0,0);
-//colorblind friendly colors
-uint32_t ledCBBlue = pixels.Color(0,9*brightness,20*brightness);
-uint32_t ledCBPink = pixels.Color(25*brightness,12*brightness,25*brightness);
-uint32_t ledCBGreen = pixels.Color(1*brightness,18*brightness,9*brightness);
-uint32_t ledCBYellow = pixels.Color(24*brightness,24*brightness,5*brightness);
-
-uint32_t palette[2][4] = {{ledCBGreen,ledCBPink,ledCBBlue,ledCBYellow},{ledGreen,ledRed,ledBlue,ledPurple}};
-
-int colorBlind = 0;
 
 int delayVal = 50;
 
@@ -81,68 +72,80 @@ void callback(char* topic, byte* payload, unsigned int length, PubSubClient *cli
 }
 
 void connectSuccess(PubSubClient* client, char* ip) {
-  //Serial.println("connected");
+  Serial.println("connected");
   sprintf(buf, "{\"Hostname\":\"%s\", \"IPaddress\":\"%s\"}", host_name, ip);
   client->publish("tele/i3/inside/commons/map-board/INFO2", buf);
   loop_mqtt();
 
   client->subscribe("stat/i3/commons/lights/+/POWER");
   loop_mqtt();
-  client->subscribe("stat/i3/inside/commons/east-ceiling-fans/POWER");
-  loop_mqtt();
-  client->subscribe("stat/i3/machineShop/fans/ceilingFan/POWER");
-  loop_mqtt();
-  // client->subscribe("stat/i3/laserZone/ceilingFan/POWER");
-  // loop_mqtt();
-  // client->subscribe("stat/i3/laserZone/ventFan/POWER");
-  // loop_mqtt();
-  // client->subscribe("stat/i3/inside/fablab/vent/POWER");
-  // loop_mqtt();
-  // client->subscribe("stat/i3/inside/office-bathroom/light/POWER");
-  // loop_mqtt();
-  // client->subscribe("stat/i3/inside/commons/bathroom-vent-fan/POWER");
-  // loop_mqtt();
-
   client->subscribe("tele/i3/commons/lights/+/LWT");
+  loop_mqtt();
+  client->publish("cmnd/i3/commons/lights/all/POWER", " ");
+  loop_mqtt();
+  Serial.println("lights loaded");
+
+  client->subscribe("stat/i3/inside/commons/east-ceiling-fans/POWER");
   loop_mqtt();
   client->subscribe("tele/i3/inside/commons/east-ceiling-fans/LWT");
   loop_mqtt();
-  client->subscribe("tele/i3/machineShop/fans/ceilingFan/LWT");
+  client->publish("cmnd/i3/inside/commons/east-ceiling-fans/POWER", " ");
   loop_mqtt();
+  Serial.println("east fans loaded");
+
+  // client->subscribe("stat/i3/machineShop/fans/ceilingFan/POWER");
+  // loop_mqtt();
+  // client->subscribe("tele/i3/machineShop/fans/ceilingFan/LWT");
+  // loop_mqtt();
+  // client->publish("cmnd/i3/machineShop/fans/ceilingFan/POWER", " ");
+  // loop_mqtt();
+  // Serial.println("machine shop fan loaded");
+
+  // client->subscribe("stat/i3/laserZone/ceilingFan/POWER");
+  // loop_mqtt();
   // client->subscribe("tele/i3/laserZone/ceilingFan/LWT");
+  // loop_mqtt();
+  // client->publish("cmnd/i3/laserZone/ceilingFan/POWER", " ");
+  // loop_mqtt();
+  // Serial.println("laser ceiling fan loaded");
+
+  // client->subscribe("stat/i3/laserZone/ventFan/POWER");
   // loop_mqtt();
   // client->subscribe("tele/i3/laserZone/ventFan/LWT");
   // loop_mqtt();
-  // client->subscribe("tele/i3/inside/fablab/vent/LWT");
-  // loop_mqtt();
-  // client->subscribe("tele/i3/inside/office-bathroom/light/LWT");
-  // loop_mqtt();
-  // client->subscribe("tele/i3/inside/commons/bathroom-vent-fan/LWT");
-  // loop_mqtt();
-
-  client->publish("cmnd/i3/commons/lights/all/POWER", " ");
-  loop_mqtt();
-  client->publish("cmnd/i3/inside/commons/east-ceiling-fans/POWER", " ");
-  loop_mqtt();
-  client->publish("cmnd/i3/machineShop/fans/ceilingFan/POWER", " ");
-  loop_mqtt();
-  // client->publish("cmnd/i3/laserZone/ceilingFan/POWER", " ");
-  // loop_mqtt();
   // client->publish("cmnd/i3/laserZone/ventFan/POWER", " ");
+  // loop_mqtt();
+  // Serial.println("laser vent loaded");
+
+  // client->subscribe("stat/i3/inside/fablab/vent/POWER");
+  // loop_mqtt();
+  // client->subscribe("tele/i3/inside/fablab/vent/LWT");
   // loop_mqtt();
   // client->publish("cmnd/i3/inside/fablab/vent/POWER", " ");
   // loop_mqtt();
+  // Serial.println("fab lab vent loaded");
+
+  // client->subscribe("stat/i3/inside/office-bathroom/light/POWER");
+  // loop_mqtt();
+  // client->subscribe("tele/i3/inside/office-bathroom/light/LWT");
+  // loop_mqtt();
   // client->publish("cmnd/i3/inside/office-bathroom/light/POWER", " ");
+  // loop_mqtt();
+  // Serial.println("Bathroom light loaded");
+
+  // client->subscribe("stat/i3/inside/commons/bathroom-vent-fan/POWER");
+  // loop_mqtt();
+  // client->subscribe("tele/i3/inside/commons/bathroom-vent-fan/LWT");
   // loop_mqtt();
   // client->publish("cmnd/i3/inside/commons/bathroom-vent-fan/POWER", " ");
   // loop_mqtt();
+  // Serial.println("Bathroom fan loaded");
 }
 
 
 void setup() {
-  pinMode(BUTTON_PIN, INPUT);
   //start serial connection
-  //Serial.begin(115200);
+  Serial.begin(115200);
   setup_mqtt(connectedLoop, callback, connectSuccess, ssid, password, mqtt_server, mqtt_port, host_name);
   pixels.begin();
   for (int j=0; j < NUM_PIXELS; j++) {
@@ -154,44 +157,34 @@ void setup() {
      pixels.setPixelColor(j,ledOff);
   }
   // Map key
+  pixels.setPixelColor(1,ledGreen);
+  pixels.setPixelColor(2,ledRed);
+  pixels.setPixelColor(3,ledBlue);
+  pixels.setPixelColor(4,ledPurple);
+  Serial.print("Setup complete");
 }
 
 void connectedLoop(PubSubClient* client) {
+  for (int j = 0; j < numLights; j++) {
+    setLED(*lights[j]);
+  }
+  pixels.show();
+  delay(delayVal);
+  //Serial.print("looped");
 }
 
 void loop() {
-  colorBlind = digitalRead(BUTTON_PIN);
-  pixels.setPixelColor(0,palette[colorBlind][0]);
-  pixels.setPixelColor(1,palette[colorBlind][1]);
-  pixels.setPixelColor(2,palette[colorBlind][2]);
-  pixels.setPixelColor(3,palette[colorBlind][3]);
-	loop_mqtt();
-	for (int j = 0; j < numLights; j++) {
-		setLED(*lights[j]);
-	}
-  pixels.show();
-  delay(delayVal);
+  loop_mqtt();
 }
 
-// void setLED(light device) {
-//   if (device.state == ON) {
-//     pixels.setPixelColor(device.ledNum,ledGreen);
-//   } else if (device.state == OFF) {
-//     pixels.setPixelColor(device.ledNum,ledRed);
-//   } else if (device.state == DISCONNECTED) {
-//     pixels.setPixelColor(device.ledNum,ledBlue);
-//   } else if (device.state == UNKNOWN) {
-//     pixels.setPixelColor(device.ledNum,ledPurple);
-//   }
-// }
 void setLED(light device) {
   if (device.state == ON) {
-    pixels.setPixelColor(device.ledNum,palette[colorBlind][0]);
+    pixels.setPixelColor(device.ledNum,ledGreen);
   } else if (device.state == OFF) {
-    pixels.setPixelColor(device.ledNum,palette[colorBlind][1]);
+    pixels.setPixelColor(device.ledNum,ledRed);
   } else if (device.state == DISCONNECTED) {
-    pixels.setPixelColor(device.ledNum,palette[colorBlind][2]);
+    pixels.setPixelColor(device.ledNum,ledBlue);
   } else if (device.state == UNKNOWN) {
-    pixels.setPixelColor(device.ledNum,palette[colorBlind][3]);
+    pixels.setPixelColor(device.ledNum,ledPurple);
   }
 }
