@@ -38,7 +38,7 @@ def on_connect(client, userdata, flags, rc):
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
   for device in deviceList:
-    if device['topic'] in msg.topic
+    if device['topic'] in msg.topic:
       #Check if status - POWER
       if msg.topic[:4] == "stat" and msg.topic[-5:] == "POWER":
         if str(msg.payload) == "ON" or str(msg.payload) == "1":
