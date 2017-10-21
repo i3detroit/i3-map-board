@@ -33,8 +33,10 @@ class State(Enum):
   DISCONNECTED = 3
   UNKNOWN = 4
 
+openEVSEonlinetimer = 0
+
 deviceList = [
-{'topic': "/i3/inside/classroom/sign", 'ledNum':5, 'itemState': State.UNKNOWN},
+{'topic': "/i3/inside/classroom/sign/", 'ledNum':5, 'itemState': State.UNKNOWN},
 {'topic': "/i3/inside/commons/openevse/", 'ledNum':6, 'itemState': State.UNKNOWN},
 {'topic': "/i3/inside/lights/005/", 'ledNum':7, 'itemState': State.UNKNOWN},
 {'topic': "/i3/inside/lights/001/", 'ledNum':8, 'itemState': State.UNKNOWN},
@@ -63,7 +65,7 @@ deviceList = [
 {'topic': "/i3/inside/lights/035/", 'ledNum':31, 'itemState': State.UNKNOWN},
 {'topic': "/i3/inside/lights/034/", 'ledNum':32, 'itemState': State.UNKNOWN},
 {'topic': "/i3/inside/lights/033/", 'ledNum':33, 'itemState': State.UNKNOWN},
-{'topic': "/i3/inside/machineShop/air-compressor", 'ledNum':34, 'itemState': State.UNKNOWN},
+{'topic': "/i3/inside/machineShop/air-compressor/", 'ledNum':34, 'itemState': State.UNKNOWN},
 {'topic': "/i3/inside/lights/019/", 'ledNum':35, 'itemState': State.UNKNOWN},
 {'topic': "/i3/inside/lights/025/", 'ledNum':36, 'itemState': State.UNKNOWN},
 {'topic': "/i3/inside/lights/026/", 'ledNum':37, 'itemState': State.UNKNOWN},
@@ -93,10 +95,14 @@ uniqueDevices = ["/i3/inside/commons/east-ceiling-fans/",
               "/i3/inside/fablab/vent/",
               "/i3/inside/office-bathroom/light/",
               "/i3/inside/commons/bathroom-vent-fan/",
-              "/i3/commons/lights/snappleVending/"]
+              "/i3/commons/lights/snappleVending/",
+              "/i3/commons/discoBall/",
+              "/i3/inside/classroom/sign/",
+              "/i3/inside/machineShop/air-compressor/"]
 
 subList = ["stat/i3/inside/lights/+/POWER",
-          "tele/i3/inside/lights/+/LWT"]
+          "tele/i3/inside/lights/+/LWT",
+          "tele/i3/inside/commons/openevse/amp"]
 
 pubList = ["cmnd/i3/inside/lights/east/POWER",
            "cmnd/i3/inside/lights/emergency/POWER"]
@@ -131,6 +137,7 @@ def on_connect(client, userdata, flags, rc):
 
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
+  global openEVSEonlinetimer
   for device in deviceList:
     if device['topic'] in msg.topic:
       #Check if status - POWER
@@ -146,6 +153,17 @@ def on_message(client, userdata, msg):
         if str(msg.payload) == "Offline":
           device['itemState'] = State.DISCONNECTED
           print(device['topic']+" is DISCONNECTED")
+      elif msg.topic[:4] == "tele" and msg.topic[-3:] == "amp":
+        openEVSEonlinetimer = time.time()
+        if int(msg.payload) == 0:
+          device['itemState'] = State.OFF
+          print("openEVSE on but not charging")
+        elif int(msg.payload) > 0:
+          device['itemState'] = State.ON
+          print("openEVSE on and charging")
+      if (time.time()-openEVSEonlinetimer) > 45:
+        deviceList[1]['itemState'] = State.DISCONNECTED
+        strip.setPixelColor(deviceList[1]['ledNum'],ledRed)
       if device['itemState'] == State.OFF:
         strip.setPixelColor(device['ledNum'],ledBlue)
       elif device['itemState'] == State.ON:
