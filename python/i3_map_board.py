@@ -102,6 +102,7 @@ uniqueDevices = ["/i3/inside/commons/east-ceiling-fans/",
 
 subList = ["stat/i3/inside/lights/+/POWER",
           "tele/i3/inside/lights/+/LWT",
+          "tele/i3/inside/lights/+/STATE",
           "tele/i3/inside/commons/openevse/amp"]
 
 pubList = ["cmnd/i3/inside/lights/east/POWER",
@@ -120,6 +121,7 @@ time.sleep(wait_ms/1000.0)
 for item in uniqueDevices:
   subList.append("stat"+item+"POWER")
   subList.append("tele"+item+"LWT")
+  subList.append("tele"+item+"STATE")
   pubList.append("cmnd"+item+"POWER")
 
 # The callback for when the client receives a CONNACK response from the server.
@@ -153,6 +155,15 @@ def on_message(client, userdata, msg):
         if str(msg.payload) == "Offline":
           device['itemState'] = State.DISCONNECTED
           print(device['topic']+" is DISCONNECTED")
+      # Check if telemetry - STATE
+      elif msg.topic[:4] == "tele" and msg.topic[-5:] == "STATE":
+        if "\"POWER\":\"OFF\"" in str(msg.payload):
+          device['itemState'] = State.OFF
+          print(device['topic']+" telemetry OFF")
+        elif "\"POWER\":\"ON\"" in str(msg.payload):
+          device['itemState'] = State.ON
+          print(device['topic']+" telemetry ON")
+      # Check if EV charger
       elif msg.topic[:4] == "tele" and msg.topic[-3:] == "amp":
         openEVSEonlinetimer = time.time()
         if int(msg.payload) == 0:
@@ -161,6 +172,8 @@ def on_message(client, userdata, msg):
         elif int(msg.payload) > 0:
           device['itemState'] = State.ON
           print("openEVSE on and charging")
+      
+      # LED Coloring
       if (time.time()-openEVSEonlinetimer) > 45:
         deviceList[1]['itemState'] = State.DISCONNECTED
         strip.setPixelColor(deviceList[1]['ledNum'],ledRed)
