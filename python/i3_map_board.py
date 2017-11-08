@@ -240,7 +240,7 @@ def on_connect(client, userdata, flags, rc):
 
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
-	print("received"+msg.topic+" "+msg.payload)
+	#print("received "+msg.topic+" "+msg.payload)
 	for device in deviceList:
 		# Match message topic to device, determine state of device
 		# Coarse filtering for stat/tele
