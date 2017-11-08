@@ -27,10 +27,10 @@ onColor						= Color(0,25*brightness,0)							# green
 #ledDark 					= Color(0,0,0)
 
 class State(Enum):
-  OFF = 1
-  ON = 2
-  DISCONNECTED = 3
-  UNKNOWN = 4
+	OFF = 1
+	ON = 2
+	DISCONNECTED = 3
+	UNKNOWN = 4
 
 # Map legend
 strip.setPixelColor(1,ledGreen);
@@ -168,47 +168,47 @@ deviceList = [
 ]
 
 for item in deviceList:
-  strip.setPixelColor(item['ledNum'],ledPurple)
+	strip.setPixelColor(item['ledNum'],ledPurple)
 strip.show()
 time.sleep(wait_ms/1000.0)
 
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
-  print("Connected with result code "+str(rc))
-  client.publish("tele/i3/inside/commons/map-board/INFO2", "online")
+	print("Connected with result code "+str(rc))
+	client.publish("tele/i3/inside/commons/map-board/INFO2", "online")
 
-  # Subscribing in on_connect() means that if we lose the connection and
-  # reconnect then subscriptions will be renewed.
-  for item in deviceList:
-    client.subscribe(item['topic'])
+	# Subscribing in on_connect() means that if we lose the connection and
+	# reconnect then subscriptions will be renewed.
+	for item in deviceList:
+		client.subscribe(item['topic'])
 
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
-  for device in deviceList:
-  	# Match message topic to device, determine state of device
-  	# Coarse filtering for stat/tele
-  	if device['topic'][:4] == msg.topic[:4]:
-	    if device['topic'] == msg.topic:
-	    	if device['onState'] == msg.payload:
-	    		print(device['topic']+" is ON")
-	    		device['itemState'] = State.ON
-	    	elif device['offState'] == msg.payload:
-	    		if device['offType'] == State.OFF:
-	    			print(device['topic']+" is OFF")
-	    			device['itemState'] = State.OFF
-	    		elif device['offType'] == State.DISCONNECTED:
-	    			print(device['topic']+" is DISCONNECTED")
-	    			device['itemState'] = State.DISCONNECTED
-    # Color the device LED
-    # all colors will be set on every message, not just matching topics. Probably redundant. May change this if it's slow			
-    if device['itemState'] == State.OFF:
-      strip.setPixelColor(device['ledNum'],offColor)
-    elif device['itemState'] == State.ON:
-      strip.setPixelColor(device['ledNum'],onColor)
-    elif device['itemState'] == State.DISCONNECTED:
-      strip.setPixelColor(device['ledNum'],disconnectedColor)			
-    strip.show()
-    time.sleep(wait_ms/1000.0)
+	for device in deviceList:
+		# Match message topic to device, determine state of device
+		# Coarse filtering for stat/tele
+		if device['topic'][:4] == msg.topic[:4]:
+			if device['topic'] == msg.topic:
+				if device['onState'] == msg.payload:
+					print(device['topic']+" is ON")
+					device['itemState'] = State.ON
+				elif device['offState'] == msg.payload:
+					if device['offType'] == State.OFF:
+						print(device['topic']+" is OFF")
+						device['itemState'] = State.OFF
+					elif device['offType'] == State.DISCONNECTED:
+						print(device['topic']+" is DISCONNECTED")
+						device['itemState'] = State.DISCONNECTED
+		# Color the device LED
+		# all colors will be set on every message, not just matching topics. Probably redundant. May change this if it's slow			
+		if device['itemState'] == State.OFF:
+			strip.setPixelColor(device['ledNum'],offColor)
+		elif device['itemState'] == State.ON:
+			strip.setPixelColor(device['ledNum'],onColor)
+		elif device['itemState'] == State.DISCONNECTED:
+			strip.setPixelColor(device['ledNum'],disconnectedColor)			
+		strip.show()
+		time.sleep(wait_ms/1000.0)
 
 client = mqtt.Client()
 client.on_connect = on_connect
