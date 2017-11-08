@@ -241,21 +241,21 @@ def on_connect(client, userdata, flags, rc):
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
 	print("received"+msg.topic+" "+msg.payload)
-	# for device in deviceList:
-	# 	# Match message topic to device, determine state of device
-	# 	# Coarse filtering for stat/tele
-	# 	if device['topic'][:4] == msg.topic[:4]:
-	# 		if device['topic'] == msg.topic:
-	# 			if device['onState'] in msg.payload:
-	# 				print(device['topic']+" is ON")
-	# 				device['itemState'] = State.ON
-	# 			elif device['offState'] in msg.payload:
-	# 				if device['offType'] == State.OFF:
-	# 					print(device['topic']+" is OFF")
-	# 					device['itemState'] = State.OFF
-	# 				elif device['offType'] == State.DISCONNECTED:
-	# 					print(device['topic']+" is DISCONNECTED")
-	# 					device['itemState'] = State.DISCONNECTED
+	for device in deviceList:
+		# Match message topic to device, determine state of device
+		# Coarse filtering for stat/tele
+		if device['topic'][:4] == msg.topic[:4]:
+			if device['topic'] == msg.topic:
+				if device['onState'] in msg.payload:
+					print(device['topic']+" is ON")
+					device['itemState'] = State.ON
+				elif device['offState'] in msg.payload:
+					if device['offType'] == State.OFF:
+						print(device['topic']+" is OFF")
+						device['itemState'] = State.OFF
+					elif device['offType'] == State.DISCONNECTED:
+						print(device['topic']+" is DISCONNECTED")
+						device['itemState'] = State.DISCONNECTED
 	# 	# Color the device LED
 	# 	# all colors will be set on every message, not just matching topics. Probably redundant. May change this if it's slow			
 	# 	if device['itemState'] == State.OFF:
