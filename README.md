@@ -1,10 +1,9 @@
 # i3-map-board
-Display board for device statuses such as lights, fans, etc.
+Display for device statuses such as lights, fans, etc.
 
-Initially written for arduino to run on an esp8266, then rewritten in python to run on a raspberry pi zero w. The arduino version does not function fully, due to problems subscribing to too many MQTT topics.
+Via MQTT, subscribes to status and telemetry messages from light fixtures, door sensors, exhaust fans, disco balls, etc.  and then outputs device states to LEDs
 
-Via MQTT, subscribes to all status (POWER) and telemetry (LWT) messages from lighting, ceiling fans, exhaust fans, etc.  and then outputs states to ws2812 LEDs
+i3_map_board.py is designed to run on a Raspberry Pi Zero W with neopixels/WS281X on pin 18.
+items_list.ods is a spreadsheet to clearly store and generate the MQTT items list dictionary. Add items and then copy the whole thing back into the pyhton script.
 
-items.h includes the definitions of device types being tracked
-items_list.h includes declarations for each individual device to store indivudual device states, output LED numbers, MQTT topic, etc.
-These were merged with the main program in the python version.
+Initially written for arduino to run on an esp8266, then rewritten in python for a pi. The arduino version does not fully function, due to problems subscribing to too many MQTT topics.
