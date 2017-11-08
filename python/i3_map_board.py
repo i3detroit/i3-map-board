@@ -256,16 +256,15 @@ def on_message(client, userdata, msg):
 					elif device['offType'] == State.DISCONNECTED:
 						print(device['topic']+" is DISCONNECTED")
 						device['itemState'] = State.DISCONNECTED
-	# 	# Color the device LED
-	# 	# all colors will be set on every message, not just matching topics. Probably redundant. May change this if it's slow			
-	# 	if device['itemState'] == State.OFF:
-	# 		strip.setPixelColor(device['ledNum'],offColor)
-	# 	elif device['itemState'] == State.ON:
-	# 		strip.setPixelColor(device['ledNum'],onColor)
-	# 	elif device['itemState'] == State.DISCONNECTED:
-	# 		strip.setPixelColor(device['ledNum'],disconnectedColor)			
-	# 	strip.show()
-	# 	time.sleep(wait_ms/1000.0)
+			# Color the device LED		
+			if device['itemState'] == State.OFF:
+				strip.setPixelColor(device['ledNum'],offColor)
+			elif device['itemState'] == State.ON:
+				strip.setPixelColor(device['ledNum'],onColor)
+			elif device['itemState'] == State.DISCONNECTED:
+				strip.setPixelColor(device['ledNum'],disconnectedColor)			
+			strip.show()
+			time.sleep(wait_ms/1000.0)
 
 client = mqtt.Client()
 client.on_connect = on_connect
