@@ -20,17 +20,34 @@ strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, 
 strip.begin()
 
 brightness = 3
-ledDisconnected = Color(25*brightness,0,0)
-ledOff = Color(0,0,25*brightness)
-ledUnkown = Color(25*brightness,0,18*brightness)
-ledOn = Color(0,25*brightness,0)
-ledOff = Color(0,0,0)
+disconnectedColor = Color(25*brightness,0,0) 							# red
+offColor					= Color(0,0,25*brightness)							# blue
+unknownColor			= Color(25*brightness,0,18*brightness)	# purple
+onColor						= Color(0,25*brightness,0)							# green
+#ledDark 					= Color(0,0,0)
 
 class State(Enum):
   OFF = 1
   ON = 2
   DISCONNECTED = 3
   UNKNOWN = 4
+
+# Map legend
+strip.setPixelColor(1,ledGreen);
+strip.setPixelColor(2,ledRed);
+strip.setPixelColor(3,ledBlue);
+strip.setPixelColor(4,ledPurple);
+
+# Devices are listed here in a dictionary with a number of keys
+# 'topic' is the full MQTT topic to subscribe to/listen for
+# 'ledNum' is the neopixel order number on the physical map
+# 'itemState' is where the device's current state is stored
+# 'onState' is the message payload corresponding to the device being on
+# 'offState' is the message payload corresponding to the device being off
+# 'offType' determines whether a device found to be "off" gets the state OFF or DISCONNECTED.
+# 	offType is a little hacky, but it lets me treat stat and tele messages in a similar way.
+#		*typically* stat messages result in the device being marked ON or OFF, while tele messages result in the device being marked ON or DISCONNECTED
+#		But there are exceptions like the OpenEVSE which this allows for without having to hardcode 'stat means this' and 'tele means that'
 
 deviceList = [
 {'topic': "stat/i3/classroom/glassDoor/lock", 'ledNum': 5, 'itemState': State.UNKNOWN, 'onState': "LOCKED", 'offState': "UNLOCKED", 'offType': State.OFF},
@@ -150,11 +167,6 @@ deviceList = [
 {'topic': "tele/i3/machineShop/fans/ceilingFan/LWT", 'ledNum': 25, 'itemState': State.UNKNOWN, 'onState': "Online", 'offState': "Offline", 'offType': State.DISCONNECTED}
 ]
 
-strip.setPixelColor(1,ledGreen);
-strip.setPixelColor(2,ledRed);
-strip.setPixelColor(3,ledBlue);
-strip.setPixelColor(4,ledPurple);
-
 for item in deviceList:
   strip.setPixelColor(item['ledNum'],ledPurple)
 strip.show()
@@ -173,18 +185,30 @@ def on_connect(client, userdata, flags, rc):
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
   for device in deviceList:
-    if device['topic'] == msg.topic:
-    	if device['onState'] == msg.payload:
-    		print(device['topic']+" is ON")
-    	elif device['offState'] == msg.payload:
-    		if device['offType'] == State.OFF:
-    			print(device['topic']+" is OFF")
-    		elif device['offType'] == State.DISCONNECTED:
-    			print(device['topic']+" is DISCONNECTED")
-    			
-    			
-      strip.show()
-      time.sleep(wait_ms/1000.0)
+  	# Match message topic to device, determine state of device
+  	# Coarse filtering for stat/tele
+  	if device['topic'][:4] == msg.topic[:4]:
+	    if device['topic'] == msg.topic:
+	    	if device['onState'] == msg.payload:
+	    		print(device['topic']+" is ON")
+	    		device['itemState'] = State.ON
+	    	elif device['offState'] == msg.payload:
+	    		if device['offType'] == State.OFF:
+	    			print(device['topic']+" is OFF")
+	    			device['itemState'] = State.OFF
+	    		elif device['offType'] == State.DISCONNECTED:
+	    			print(device['topic']+" is DISCONNECTED")
+	    			device['itemState'] = State.DISCONNECTED
+    # Color the device LED
+    # all colors will be set on every message, not just matching topics. Probably redundant. May change this if it's slow			
+    if device['itemState'] == State.OFF:
+      strip.setPixelColor(device['ledNum'],offColor)
+    elif device['itemState'] == State.ON:
+      strip.setPixelColor(device['ledNum'],onColor)
+    elif device['itemState'] == State.DISCONNECTED:
+      strip.setPixelColor(device['ledNum'],disconnectedColor)			
+    strip.show()
+    time.sleep(wait_ms/1000.0)
 
 client = mqtt.Client()
 client.on_connect = on_connect
