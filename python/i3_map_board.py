@@ -33,10 +33,10 @@ class State(Enum):
 	UNKNOWN = 4
 
 # Map legend
-strip.setPixelColor(1,ledGreen);
-strip.setPixelColor(2,ledRed);
-strip.setPixelColor(3,ledBlue);
-strip.setPixelColor(4,ledPurple);
+strip.setPixelColor(1,onColor);
+strip.setPixelColor(2,disconnectedColor);
+strip.setPixelColor(3,offColor);
+strip.setPixelColor(4,unknownColor);
 
 # Devices are listed here in a dictionary with a number of keys
 # 'topic' is the full MQTT topic to subscribe to/listen for
@@ -168,7 +168,7 @@ deviceList = [
 ]
 
 for item in deviceList:
-	strip.setPixelColor(item['ledNum'],ledPurple)
+	strip.setPixelColor(item['ledNum'],unknownColor)
 strip.show()
 time.sleep(wait_ms/1000.0)
 
