@@ -246,11 +246,11 @@ def on_message(client, userdata, msg):
 		# Coarse filtering for stat/tele
 		if device['topic'][:4] == msg.topic[:4]:
 			if device['topic'] == msg.topic:
-				if device['onState'] in msg.payload:
+				if str(device['onState']) in msg.payload:
 					print(device['topic']+" is ON")
 					device['itemState'] = State.ON
 				elif device['offState'] in msg.payload:
-					if device['offType'] == State.OFF:
+					if str(device['offType']) == State.OFF:
 						print(device['topic']+" is OFF")
 						device['itemState'] = State.OFF
 					elif device['offType'] == State.DISCONNECTED:
