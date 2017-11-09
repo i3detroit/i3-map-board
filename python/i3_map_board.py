@@ -39,24 +39,24 @@ strip.setPixelColor(3,offColor);
 strip.setPixelColor(4,unknownColor);
 
 # Devices are listed here in a dictionary with a number of keys
-# 'topic' is the full MQTT topic to subscribe to/listen for
-# 'ledNum' is the neopixel order number on the physical map
-# 'itemState' is where the device's current state is stored
-# 'onState' is the message payload corresponding to the device being on
-# 'offState' is the message payload corresponding to the device being off
-# 'offType' determines whether a device found to be "off" gets the state OFF or DISCONNECTED.
-# 	offType is a little hacky, but it lets me treat stat and tele messages in a similar way.
+#	'topic' is the full MQTT topic to subscribe to/listen for
+#	'ledNum' is the neopixel order number on the physical map
+#	'itemState' is where the device's current state is stored
+#	'onState' is the message payload corresponding to the device being on
+#	'offState' is the message payload corresponding to the device being off
+#	'offType' determines whether a device found to be "off" gets the state OFF or DISCONNECTED.
+#		offType is a little hacky, but it lets me treat stat and tele messages in a similar way.
 #		*typically* stat and tele/../STATE messages result in the device being marked ON or OFF, while tele/../LWT messages result in the device being marked DISCONNECTED
 #		But there are exceptions like the OpenEVSE which this allows for without having to hardcode 'stat means this' and 'tele means that'
 
 deviceList = [
 {'topic': "stat/i3/classroom/glassDoor/lock", 'ledNum': 5, 'itemState': State.UNKNOWN, 'onState': "LOCKED", 'offState': "UNLOCKED", 'offType': State.OFF},
 {'topic': "stat/i3/classroom/glassDoor/open", 'ledNum': 6, 'itemState': State.UNKNOWN, 'onState': "CLOSED", 'offState': "OPEN", 'offType': State.OFF},
-{'topic': "stat/i3/commons/lights/snappleVending/POWER", 'ledNum': 32, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType': State.OFF},
+{'topic': "stat/i3/inside/commons/snapple-vending-light/POWER", 'ledNum': 32, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType': State.OFF},
 {'topic': "stat/i3/inside/accent/chandelier-01/POWER", 'ledNum': 37, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType': State.OFF},
 {'topic': "stat/i3/inside/accent/chandelier-02/POWER", 'ledNum': 72, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType': State.OFF},
 {'topic': "stat/i3/inside/classroom/sign/POWER", 'ledNum': 7, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType': State.OFF},
-{'topic': "stat/i3/inside/cnc/exhaust-fan/POWER", 'ledNum': 19, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType': State.OFF},
+{'topic': "stat/i3/inside/cnc/vent/POWER", 'ledNum': 19, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType': State.OFF},
 {'topic': "stat/i3/inside/cnc/light/POWER", 'ledNum': 20, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType': State.OFF},
 {'topic': "stat/i3/inside/commons/disco/POWER", 'ledNum': 35, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType': State.OFF},
 {'topic': "stat/i3/inside/commons/east-ceiling-fans/POWER", 'ledNum': 27, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType': State.OFF},
@@ -104,21 +104,21 @@ deviceList = [
 {'topic': "stat/i3/inside/lights/035/POWER", 'ledNum': 40, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType': State.OFF},
 {'topic': "stat/i3/inside/lights/036/POWER", 'ledNum': 55, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType': State.OFF},
 {'topic': "stat/i3/inside/lights/037/POWER", 'ledNum': 58, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType': State.OFF},
-{'topic': "stat/i3/inside/machineShop/air-compressor/POWER", 'ledNum': 43, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType': State.OFF},
+{'topic': "stat/i3/inside/infrastructure/air-compressor/POWER", 'ledNum': 43, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType': State.OFF},
 {'topic': "stat/i3/laserZone/ceilingFan/POWER", 'ledNum': 57, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType': State.OFF},
 {'topic': "stat/i3/laserZone/ventFan/POWER", 'ledNum': 53, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType': State.OFF},
-{'topic': "stat/i3/machineShop/fans/ceilingFan/POWER", 'ledNum': 25, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType': State.OFF},
-{'topic': "tele/i3/commons/lights/snappleVending/LWT", 'ledNum': 32, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED},
+{'topic': "stat/i3/inside/machine-shop/ceiling-fan/POWER", 'ledNum': 25, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType': State.OFF},
+{'topic': "tele/i3/inside/commons/openevse/state", 'ledNum': 12, 'itemState': State.UNKNOWN, 'onState':3, 'offState':1, 'offType': State.OFF},
+{'topic': "tele/i3/inside/commons/openevse", 'ledNum': 12, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "disconnected", 'offType': State.DISCONNECTED},
+{'topic': "tele/i3/inside/commons/snapple-vending-light/LWT", 'ledNum': 32, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED},
 {'topic': "tele/i3/inside/accent/chandelier-01/LWT", 'ledNum': 37, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED},
 {'topic': "tele/i3/inside/accent/chandelier-02/LWT", 'ledNum': 72, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED},
 {'topic': "tele/i3/inside/classroom/sign/LWT", 'ledNum': 7, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED},
-{'topic': "tele/i3/inside/cnc/exhaust-fan/LWT", 'ledNum': 19, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED},
+{'topic': "tele/i3/inside/cnc/vent/LWT", 'ledNum': 19, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED},
 {'topic': "tele/i3/inside/cnc/light/LWT", 'ledNum': 20, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED},
 {'topic': "tele/i3/inside/commons/disco/LWT", 'ledNum': 35, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED},
 {'topic': "tele/i3/inside/commons/east-ceiling-fans/LWT", 'ledNum': 27, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED},
 {'topic': "tele/i3/inside/commons/east-ceiling-fans/LWT", 'ledNum': 31, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED},
-{'topic': "tele/i3/inside/commons/openevse/state", 'ledNum': 12, 'itemState': State.UNKNOWN, 'onState':3, 'offState':1, 'offType': State.OFF},
-{'topic': "tele/i3/inside/commons/openevse", 'ledNum': 12, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "disconnected", 'offType': State.DISCONNECTED},
 {'topic': "tele/i3/inside/commons/south-vent/LWT", 'ledNum': 60, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED},
 {'topic': "tele/i3/inside/fablab/vent/LWT", 'ledNum': 59, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED},
 {'topic': "tele/i3/inside/infrastructure/compressor-valve/LWT", 'ledNum': 44, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED},
@@ -161,15 +161,15 @@ deviceList = [
 {'topic': "tele/i3/inside/lights/035/LWT", 'ledNum': 40, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED},
 {'topic': "tele/i3/inside/lights/036/LWT", 'ledNum': 55, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED},
 {'topic': "tele/i3/inside/lights/037/LWT", 'ledNum': 58, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED},
-{'topic': "tele/i3/inside/machineShop/air-compressor/LWT", 'ledNum': 43, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED},
+{'topic': "tele/i3/inside/infrastructure/air-compressor/LWT", 'ledNum': 43, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED},
 {'topic': "tele/i3/laserZone/ceilingFan/LWT", 'ledNum': 57, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED},
 {'topic': "tele/i3/laserZone/ventFan/LWT", 'ledNum': 53, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED},
-{'topic': "tele/i3/machineShop/fans/ceilingFan/LWT", 'ledNum': 25, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED},
-{'topic': "tele/i3/commons/lights/snappleVending/STATE", 'ledNum': 32, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF},
+{'topic': "tele/i3/inside/machine-shop/ceiling-fan/LWT", 'ledNum': 25, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED},
+{'topic': "tele/i3/inside/commons/snapple-vending-light/STATE", 'ledNum': 32, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF},
 {'topic': "tele/i3/inside/accent/chandelier-01/STATE", 'ledNum': 37, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF},
 {'topic': "tele/i3/inside/accent/chandelier-02/STATE", 'ledNum': 72, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF},
 {'topic': "tele/i3/inside/classroom/sign/STATE", 'ledNum': 7, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF},
-{'topic': "tele/i3/inside/cnc/exhaust-fan/STATE", 'ledNum': 19, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF},
+{'topic': "tele/i3/inside/cnc/vent/STATE", 'ledNum': 19, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF},
 {'topic': "tele/i3/inside/cnc/light/STATE", 'ledNum': 20, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF},
 {'topic': "tele/i3/inside/commons/disco/STATE", 'ledNum': 35, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF},
 {'topic': "tele/i3/inside/commons/east-ceiling-fans/STATE", 'ledNum': 27, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF},
@@ -216,10 +216,10 @@ deviceList = [
 {'topic': "tele/i3/inside/lights/035/STATE", 'ledNum': 40, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF},
 {'topic': "tele/i3/inside/lights/036/STATE", 'ledNum': 55, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF},
 {'topic': "tele/i3/inside/lights/037/STATE", 'ledNum': 58, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF},
-{'topic': "tele/i3/inside/machineShop/air-compressor/STATE", 'ledNum': 43, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF},
+{'topic': "tele/i3/inside/infrastructure/air-compressor/STATE", 'ledNum': 43, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF},
 {'topic': "tele/i3/laserZone/ceilingFan/STATE", 'ledNum': 57, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF},
 {'topic': "tele/i3/laserZone/ventFan/STATE", 'ledNum': 53, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF},
-{'topic': "tele/i3/machineShop/fans/ceilingFan/STATE", 'ledNum': 25, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF}
+{'topic': "tele/i3/inside/machine-shop/ceiling-fan/STATE", 'ledNum': 25, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF}
 ]
 
 for item in deviceList:
@@ -246,7 +246,20 @@ def on_message(client, userdata, msg):
 		# Coarse filtering for stat/tele
 		if device['topic'][:4] == msg.topic[:4]:
 			if device['topic'] == msg.topic:
-				if str(device['onState']) in msg.payload:
+				# First test for exact payload maches
+				if str(device['onState']) == msg.payload:
+					print(device['topic']+" is ON")
+					device['itemState'] = State.ON
+				elif str(device['offState']) == msg.payload:
+					if device['offType'] == State.OFF:
+						print(device['topic']+" is OFF")
+						device['itemState'] = State.OFF
+					elif device['offType'] == State.DISCONNECTED:
+						print(device['topic']+" is DISCONNECTED")
+						device['itemState'] = State.DISCONNECTED
+				# Then check for partial matches, i.e. look for "Power":"ON" in the middle of telemetry
+				# Using this method exclusively breaks for on/off states like locked/unlocked where locked is in unlocked
+				elif str(device['onState']) in msg.payload:
 					print(device['topic']+" is ON")
 					device['itemState'] = State.ON
 				elif str(device['offState']) in msg.payload:
