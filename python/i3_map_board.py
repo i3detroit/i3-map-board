@@ -285,7 +285,7 @@ pubList = [
 "cmnd/i3/laserZone/ventFan/POWER",
 "cmnd/i3/inside/machine-shop/ceiling-fan/POWER",
 "cmnd/i3/inside/media-lab/lights/POWER",
-"tele/i3/inside/commons/openevse"
+"tele/i3/inside/commons/openevse/query"
 ]
 
 for item in deviceList:
