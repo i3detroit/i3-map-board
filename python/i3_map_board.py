@@ -19,7 +19,7 @@ wait_ms = 50
 strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, LED_STRIP)
 strip.begin()
 
-brightness = 3
+brightness = 4
 disconnectedColor = Color(25*brightness,0,0) 							# red
 offColor					= Color(0,0,25*brightness)							# blue
 unknownColor			= Color(25*brightness,0,18*brightness)	# purple
@@ -108,6 +108,7 @@ deviceList = [
 {'topic': "stat/i3/laserZone/ceilingFan/POWER", 'ledNum': 57, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType': State.OFF},
 {'topic': "stat/i3/laserZone/ventFan/POWER", 'ledNum': 53, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType': State.OFF},
 {'topic': "stat/i3/inside/machine-shop/ceiling-fan/POWER", 'ledNum': 25, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType': State.OFF},
+{'topic': "stat/i3/inside/media-lab/lights/POWER", 'ledNum': 70, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType': State.OFF},
 {'topic': "tele/i3/inside/commons/openevse/state", 'ledNum': 12, 'itemState': State.UNKNOWN, 'onState':3, 'offState':1, 'offType': State.OFF},
 {'topic': "tele/i3/inside/commons/openevse", 'ledNum': 12, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "disconnected", 'offType': State.DISCONNECTED},
 {'topic': "tele/i3/inside/commons/snapple-vending-light/LWT", 'ledNum': 32, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED},
@@ -165,6 +166,7 @@ deviceList = [
 {'topic': "tele/i3/laserZone/ceilingFan/LWT", 'ledNum': 57, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED},
 {'topic': "tele/i3/laserZone/ventFan/LWT", 'ledNum': 53, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED},
 {'topic': "tele/i3/inside/machine-shop/ceiling-fan/LWT", 'ledNum': 25, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED},
+{'topic': "tele/i3/inside/media-lab/lights/LWT", 'ledNum': 70, 'itemState': State.UNKNOWN, 'onState': "Online", 'offState': "Offline", 'offType': State.DISCONNECTED},
 {'topic': "tele/i3/inside/commons/snapple-vending-light/STATE", 'ledNum': 32, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF},
 {'topic': "tele/i3/inside/accent/chandelier-01/STATE", 'ledNum': 37, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF},
 {'topic': "tele/i3/inside/accent/chandelier-02/STATE", 'ledNum': 72, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF},
@@ -219,7 +221,70 @@ deviceList = [
 {'topic': "tele/i3/inside/infrastructure/air-compressor/STATE", 'ledNum': 43, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF},
 {'topic': "tele/i3/laserZone/ceilingFan/STATE", 'ledNum': 57, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF},
 {'topic': "tele/i3/laserZone/ventFan/STATE", 'ledNum': 53, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF},
-{'topic': "tele/i3/inside/machine-shop/ceiling-fan/STATE", 'ledNum': 25, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF}
+{'topic': "tele/i3/inside/machine-shop/ceiling-fan/STATE", 'ledNum': 25, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF},
+{'topic': "tele/i3/inside/media-lab/lights/STATE", 'ledNum': 70, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF}
+]
+
+pubList = [
+"cmnd/i3/classroom/glassDoor/lock",
+"cmnd/i3/classroom/glassDoor/open",
+"cmnd/i3/inside/commons/snapple-vending-light/POWER",
+"cmnd/i3/inside/accent/chandelier-01/POWER",
+"cmnd/i3/inside/accent/chandelier-02/POWER",
+"cmnd/i3/inside/classroom/sign/POWER",
+"cmnd/i3/inside/cnc/vent/POWER",
+"cmnd/i3/inside/cnc/light/POWER",
+"cmnd/i3/inside/commons/disco/POWER",
+"cmnd/i3/inside/commons/east-ceiling-fans/POWER",
+"cmnd/i3/inside/commons/east-ceiling-fans/POWER",
+"cmnd/i3/inside/commons/garageDoor",
+"cmnd/i3/inside/commons/south-vent/POWER",
+"cmnd/i3/inside/fablab/vent/POWER",
+"cmnd/i3/inside/infrastructure/compressor-valve/POWER",
+"cmnd/i3/inside/large-bathroom/light/POWER",
+"cmnd/i3/inside/large-bathroom/vent/POWER",
+"cmnd/i3/inside/lights/001/POWER",
+"cmnd/i3/inside/lights/002/POWER",
+"cmnd/i3/inside/lights/003/POWER",
+"cmnd/i3/inside/lights/004/POWER",
+"cmnd/i3/inside/lights/005/POWER",
+"cmnd/i3/inside/lights/006/POWER",
+"cmnd/i3/inside/lights/007/POWER",
+"cmnd/i3/inside/lights/008/POWER",
+"cmnd/i3/inside/lights/009/POWER",
+"cmnd/i3/inside/lights/010/POWER",
+"cmnd/i3/inside/lights/011/POWER",
+"cmnd/i3/inside/lights/012/POWER",
+"cmnd/i3/inside/lights/013/POWER",
+"cmnd/i3/inside/lights/014/POWER",
+"cmnd/i3/inside/lights/015/POWER",
+"cmnd/i3/inside/lights/016/POWER",
+"cmnd/i3/inside/lights/017/POWER",
+"cmnd/i3/inside/lights/018/POWER",
+"cmnd/i3/inside/lights/019/POWER",
+"cmnd/i3/inside/lights/020/POWER",
+"cmnd/i3/inside/lights/021/POWER",
+"cmnd/i3/inside/lights/022/POWER",
+"cmnd/i3/inside/lights/023/POWER",
+"cmnd/i3/inside/lights/024/POWER",
+"cmnd/i3/inside/lights/025/POWER",
+"cmnd/i3/inside/lights/026/POWER",
+"cmnd/i3/inside/lights/027/POWER",
+"cmnd/i3/inside/lights/028/POWER",
+"cmnd/i3/inside/lights/029/POWER",
+"cmnd/i3/inside/lights/030/POWER",
+"cmnd/i3/inside/lights/031/POWER",
+"cmnd/i3/inside/lights/032/POWER",
+"cmnd/i3/inside/lights/033/POWER",
+"cmnd/i3/inside/lights/034/POWER",
+"cmnd/i3/inside/lights/035/POWER",
+"cmnd/i3/inside/lights/036/POWER",
+"cmnd/i3/inside/lights/037/POWER",
+"cmnd/i3/inside/infrastructure/air-compressor/POWER",
+"cmnd/i3/laserZone/ceilingFan/POWER",
+"cmnd/i3/laserZone/ventFan/POWER",
+"cmnd/i3/inside/machine-shop/ceiling-fan/POWER",
+"cmnd/i3/inside/media-lab/lights/POWER"
 ]
 
 for item in deviceList:
@@ -237,6 +302,8 @@ def on_connect(client, userdata, flags, rc):
 	for item in deviceList:
 		print("subscribing to "+item['topic'])
 		client.subscribe(item['topic'])
+	for item in pubList:
+		client.publish(item,"")
 
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
