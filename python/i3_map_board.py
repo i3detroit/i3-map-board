@@ -340,7 +340,10 @@ def on_message(client, userdata, msg):
 						device['itemState'] = State.DISCONNECTED
 				# Color the device LED		
 				if device['itemState'] == State.OFF:
-					strip.setPixelColor(device['ledNum'],offColor)
+					if device['alwaysOn'] == True:
+						strip.setPixelColor(device['ledNum'], disconnectedColor) 
+					if device['alwaysOn'] == False:
+						strip.setPixelColor(device['ledNum'],offColor)
 				elif device['itemState'] == State.ON:
 					if device['alwaysOn'] == True:
 						strip.setPixelColor(device['ledNum'],alwaysOnColor)
