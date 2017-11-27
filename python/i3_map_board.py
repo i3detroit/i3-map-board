@@ -224,8 +224,8 @@ deviceList = [
 {'topic': "tele/i3/laserZone/ventFan/STATE", 'ledNum': 53, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF, 'alwaysOn':False},
 {'topic': "tele/i3/inside/machine-shop/ceiling-fan/STATE", 'ledNum': 25, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF, 'alwaysOn':False},
 {'topic': "tele/i3/inside/media-lab/lights/STATE", 'ledNum': 70, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF, 'alwaysOn':False},
-{'topic': "tele/i3/inside/commons/paint-box/STATE", 'ledNum': 73, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType': State.OFF, 'alwaysOn':False},
-{'topic': "tele/i3/inside/commons/paint-box/STATE", 'ledNum': 73, 'itemState': State.UNKNOWN, 'onState': "Online", 'offState': "Offline", 'offType': State.DISCONNECTED, 'alwaysOn':False},
+{'topic': "stat/i3/inside/commons/paint-box/POWER", 'ledNum': 73, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType': State.OFF, 'alwaysOn':False},
+{'topic': "tele/i3/inside/commons/paint-box/LWT", 'ledNum': 73, 'itemState': State.UNKNOWN, 'onState': "Online", 'offState': "Offline", 'offType': State.DISCONNECTED, 'alwaysOn':False},
 {'topic': "tele/i3/inside/commons/paint-box/STATE", 'ledNum': 73, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF, 'alwaysOn':False}
 ]
 
