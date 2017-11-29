@@ -58,7 +58,7 @@ deviceList = [
     {'topic': "stat/i3/inside/commons/snapple-vending-light/POWER", 'ledNum': 32, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType': State.OFF, 'alwaysOn': True},
     {'topic': "stat/i3/inside/accent/chandelier-01/POWER", 'ledNum': 37, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType': State.OFF, 'alwaysOn': False},
     {'topic': "stat/i3/inside/accent/chandelier-02/POWER", 'ledNum': 72, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType': State.OFF, 'alwaysOn': False},
-    {'topic': "stat/i3/inside/classroom/sign/POWER", 'ledNum': 7, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType': State.OFF, 'alwaysOn': False},
+    {'topic': "stat/i3/inside/classroom/sign/POWER", 'ledNum': 7, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType': State.OFF, 'alwaysOn': None},
     {'topic': "stat/i3/inside/cnc/vent/POWER", 'ledNum': 19, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType': State.OFF, 'alwaysOn': False},
     {'topic': "stat/i3/inside/cnc/light/POWER", 'ledNum': 20, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType': State.OFF, 'alwaysOn': False},
     {'topic': "stat/i3/inside/commons/disco/POWER", 'ledNum': 35, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType': State.OFF, 'alwaysOn': False},
@@ -117,7 +117,7 @@ deviceList = [
     {'topic': "tele/i3/inside/commons/snapple-vending-light/LWT", 'ledNum': 32, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED, 'alwaysOn': True},
     {'topic': "tele/i3/inside/accent/chandelier-01/LWT", 'ledNum': 37, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED, 'alwaysOn': False},
     {'topic': "tele/i3/inside/accent/chandelier-02/LWT", 'ledNum': 72, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED, 'alwaysOn': False},
-    {'topic': "tele/i3/inside/classroom/sign/LWT", 'ledNum': 7, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED, 'alwaysOn': False},
+    {'topic': "tele/i3/inside/classroom/sign/LWT", 'ledNum': 7, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED, 'alwaysOn': None},
     {'topic': "tele/i3/inside/cnc/vent/LWT", 'ledNum': 19, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED, 'alwaysOn': False},
     {'topic': "tele/i3/inside/cnc/light/LWT", 'ledNum': 20, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED, 'alwaysOn': False},
     {'topic': "tele/i3/inside/commons/disco/LWT", 'ledNum': 35, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType': State.DISCONNECTED, 'alwaysOn': False},
@@ -173,7 +173,7 @@ deviceList = [
     {'topic': "tele/i3/inside/commons/snapple-vending-light/STATE", 'ledNum': 32, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF, 'alwaysOn': True},
     {'topic': "tele/i3/inside/accent/chandelier-01/STATE", 'ledNum': 37, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF, 'alwaysOn': False},
     {'topic': "tele/i3/inside/accent/chandelier-02/STATE", 'ledNum': 72, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF, 'alwaysOn': False},
-    {'topic': "tele/i3/inside/classroom/sign/STATE", 'ledNum': 7, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF, 'alwaysOn': False},
+    {'topic': "tele/i3/inside/classroom/sign/STATE", 'ledNum': 7, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF, 'alwaysOn': None},
     {'topic': "tele/i3/inside/cnc/vent/STATE", 'ledNum': 19, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF, 'alwaysOn': False},
     {'topic': "tele/i3/inside/cnc/light/STATE", 'ledNum': 20, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF, 'alwaysOn': False},
     {'topic': "tele/i3/inside/commons/disco/STATE", 'ledNum': 35, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType': State.OFF, 'alwaysOn': False},
@@ -349,10 +349,10 @@ def on_message(client, userdata, msg):
                 if device['itemState'] == State.OFF:
                     if device['alwaysOn'] is True:
                         strip.setPixelColor(device['ledNum'], disconnectedColor)
-                    if device['alwaysOn'] is False:
+                    elif device['alwaysOn'] is False or device['alwaysOn'] is None:
                         strip.setPixelColor(device['ledNum'], offColor)
                 elif device['itemState'] == State.ON:
-                    if device['alwaysOn'] is True:
+                    if device['alwaysOn'] is True or device['alwaysOn'] is None:
                         strip.setPixelColor(device['ledNum'], alwaysOnColor)
                     else:
                         strip.setPixelColor(device['ledNum'], onColor)
