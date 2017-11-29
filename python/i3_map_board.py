@@ -37,9 +37,9 @@ class State(Enum):
 
 # Map legend
 strip.setPixelColor(1, onColor)
-strip.setPixelColor(2, disconnectedColor)
+strip.setPixelColor(4, disconnectedColor)
 strip.setPixelColor(3, offColor)
-strip.setPixelColor(4, unknownColor)
+strip.setPixelColor(2, alwaysOnColor)
 
 # Devices are listed here in a dictionary with a number of keys
 # 'topic' is the full MQTT topic to subscribe to/listen for
@@ -361,10 +361,10 @@ def on_message(client, userdata, msg):
                 strip.show()
                 time.sleep(wait_ms / 1000.0)
 
+
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
-
 client.connect("mcclellan", 1883, 60)
 
 # Blocking call that processes network traffic, dispatches callbacks and
