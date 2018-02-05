@@ -38,9 +38,9 @@ class State(Enum):
 # Map legend
 strip.setPixelColor(1, unknownColor)
 strip.setPixelColor(2, onColor)
-strip.setPixelColor(3, disconnectedColor)
+strip.setPixelColor(3, alwaysOnColor)
 strip.setPixelColor(4, offColor)
-strip.setPixelColor(5, alwaysOnColor)
+strip.setPixelColor(5, disconnectedColor)
 
 # Devices are listed here in a dictionary with a number of keys
 # 'topic' is the full MQTT topic to subscribe to/listen for
@@ -259,7 +259,16 @@ deviceList = [
     {'topic': "tele/i3/inside/hallway/light/LWT", 'ledNum':68, 'itemState': State.UNKNOWN, 'onState': "Online", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
     {'topic': "tele/i3/inside/hallway/light/LWT", 'ledNum':69, 'itemState': State.UNKNOWN, 'onState': "Online", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
     {'topic': "tele/i3/inside/hallway/light/STATE", 'ledNum':68, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
-    {'topic': "tele/i3/inside/hallway/light/STATE", 'ledNum':69, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False}
+    {'topic': "tele/i3/inside/hallway/light/STATE", 'ledNum':69, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
+    {'topic': "stat/i3/inside/laser-zone/bumblebee/laser/POWER", 'ledNum':83, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
+    {'topic': "tele/i3/inside/laser-zone/bumblebee/laser/LWT", 'ledNum':83, 'itemState': State.UNKNOWN, 'onState': "Online", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
+    {'topic': "tele/i3/inside/laser-zone/bumblebee/laser/STATE", 'ledNum':83, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
+    {'topic': "stat/i3/inside/laser-zone/wolverine/laser/POWER", 'ledNum':84, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
+    {'topic': "tele/i3/inside/laser-zone/wolverine/laser/LWT", 'ledNum':84, 'itemState': State.UNKNOWN, 'onState': "Online", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
+    {'topic': "tele/i3/inside/laser-zone/wolverine/laser/STATE", 'ledNum':84, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
+    {'topic': "stat/i3/inside/small-bathroom/light/POWER", 'ledNum':70, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
+    {'topic': "tele/i3/inside/small-bathroom/light/LWT", 'ledNum':70, 'itemState': State.UNKNOWN, 'onState': "Online", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
+    {'topic': "tele/i3/inside/small-bathroom/light/STATE", 'ledNum':70, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False}
 ]
 
 pubList = [
@@ -329,7 +338,10 @@ pubList = [
     "cmnd/i3/inside/fablab/chiller/POWER",
     "cmnd/i3/inside/craftroom/light/POWER",
     "cmnd/i3/inside/elab/light/POWER",
-    "cmnd/i3/inside/hallway/light/POWER"
+    "cmnd/i3/inside/hallway/light/POWER",
+    "cmnd/i3/inside/laser-zone/bumblebee/laser/POWER",
+    "cmnd/i3/inside/laser-zone/wolverine/laser/POWER",
+    "cmnd/i3/inside/small-bathroom/light/POWER"
 ]
 
 for item in deviceList:
@@ -402,7 +414,7 @@ def on_message(client, userdata, msg):
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
-client.connect("mcclellan", 1883, 60)
+client.connect("10.13.0.22", 1883, 60)
 
 # Blocking call that processes network traffic, dispatches callbacks and
 # handles reconnecting.
