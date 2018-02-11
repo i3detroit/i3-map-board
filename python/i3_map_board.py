@@ -63,8 +63,8 @@ deviceList = [
     {'topic': "stat/i3/inside/cnc/vent/POWER", 'ledNum':20, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "stat/i3/inside/cnc/light/POWER", 'ledNum':21, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "stat/i3/inside/commons/disco/POWER", 'ledNum':36, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
-    {'topic': "stat/i3/inside/commons/ceiling-fans/POWER", 'ledNum':28, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
-    {'topic': "stat/i3/inside/commons/ceiling-fans/POWER", 'ledNum':32, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
+    {'topic': "stat/i3/inside/commons/ceiling-fans/POWER", 'ledNum':28, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':True},
+    {'topic': "stat/i3/inside/commons/ceiling-fans/POWER", 'ledNum':32, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':True},
     {'topic': "stat/i3/inside/commons/garage-door/lock", 'ledNum':12, 'itemState': State.UNKNOWN, 'onState': "LOCKED", 'offState': "UNLOCKED", 'offType':State.OFF, 'alwaysOn':True},
     {'topic': "stat/i3/inside/commons/south-vent/POWER", 'ledNum':61, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "stat/i3/inside/fablab/chiller/POWER", 'ledNum':60, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
@@ -109,7 +109,7 @@ deviceList = [
     {'topic': "stat/i3/inside/lights/036/POWER", 'ledNum':56, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "stat/i3/inside/lights/037/POWER", 'ledNum':59, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "stat/i3/inside/infrastructure/air-compressor/POWER", 'ledNum':44, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
-    {'topic': "stat/i3/inside/laser-zone/ceiling-fan/POWER", 'ledNum':58, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
+    {'topic': "stat/i3/inside/laser-zone/ceiling-fan/POWER", 'ledNum':58, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':True},
     {'topic': "stat/i3/inside/laser-zone/vent-fan/POWER", 'ledNum':54, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "stat/i3/inside/machine-shop/ceiling-fan/POWER", 'ledNum':26, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "stat/i3/inside/media-lab/lights/POWER", 'ledNum':71, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
@@ -122,8 +122,8 @@ deviceList = [
     {'topic': "tele/i3/inside/cnc/vent/LWT", 'ledNum':20, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
     {'topic': "tele/i3/inside/cnc/light/LWT", 'ledNum':21, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
     {'topic': "tele/i3/inside/commons/disco/LWT", 'ledNum':36, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
-    {'topic': "tele/i3/inside/commons/ceiling-fans/LWT", 'ledNum':28, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
-    {'topic': "tele/i3/inside/commons/ceiling-fans/LWT", 'ledNum':32, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
+    {'topic': "tele/i3/inside/commons/ceiling-fans/LWT", 'ledNum':28, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':True},
+    {'topic': "tele/i3/inside/commons/ceiling-fans/LWT", 'ledNum':32, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':True},
     {'topic': "tele/i3/inside/commons/south-vent/LWT", 'ledNum':61, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
     {'topic': "tele/i3/inside/fablab/chiller/LWT", 'ledNum':60, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
     {'topic': "tele/i3/inside/infrastructure/compressor-valve/LWT", 'ledNum':45, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
@@ -167,7 +167,7 @@ deviceList = [
     {'topic': "tele/i3/inside/lights/036/LWT", 'ledNum':56, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
     {'topic': "tele/i3/inside/lights/037/LWT", 'ledNum':59, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
     {'topic': "tele/i3/inside/infrastructure/air-compressor/LWT", 'ledNum':44, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
-    {'topic': "tele/i3/inside/laser-zone/ceiling-fan/LWT", 'ledNum':58, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
+    {'topic': "tele/i3/inside/laser-zone/ceiling-fan/LWT", 'ledNum':58, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':True},
     {'topic': "tele/i3/inside/laser-zone/vent-fan/LWT", 'ledNum':54, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
     {'topic': "tele/i3/inside/machine-shop/ceiling-fan/LWT", 'ledNum':26, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
     {'topic': "tele/i3/inside/media-lab/lights/LWT", 'ledNum':71, 'itemState': State.UNKNOWN, 'onState': "Online", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
@@ -178,8 +178,8 @@ deviceList = [
     {'topic': "tele/i3/inside/cnc/vent/STATE", 'ledNum':20, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "tele/i3/inside/cnc/light/STATE", 'ledNum':21, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "tele/i3/inside/commons/disco/STATE", 'ledNum':36, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
-    {'topic': "tele/i3/inside/commons/ceiling-fans/STATE", 'ledNum':28, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
-    {'topic': "tele/i3/inside/commons/ceiling-fans/STATE", 'ledNum':32, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
+    {'topic': "tele/i3/inside/commons/ceiling-fans/STATE", 'ledNum':28, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':True},
+    {'topic': "tele/i3/inside/commons/ceiling-fans/STATE", 'ledNum':32, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':True},
     {'topic': "tele/i3/inside/commons/south-vent/STATE", 'ledNum':61, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "tele/i3/inside/fablab/chiller/STATE", 'ledNum':60, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "tele/i3/inside/infrastructure/compressor-valve/STATE", 'ledNum':45, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
@@ -223,7 +223,7 @@ deviceList = [
     {'topic': "tele/i3/inside/lights/036/STATE", 'ledNum':56, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "tele/i3/inside/lights/037/STATE", 'ledNum':59, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "tele/i3/inside/infrastructure/air-compressor/STATE", 'ledNum':44, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
-    {'topic': "tele/i3/inside/laser-zone/ceiling-fan/STATE", 'ledNum':58, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
+    {'topic': "tele/i3/inside/laser-zone/ceiling-fan/STATE", 'ledNum':58, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':True},
     {'topic': "tele/i3/inside/laser-zone/vent-fan/STATE", 'ledNum':54, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "tele/i3/inside/machine-shop/ceiling-fan/STATE", 'ledNum':26, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "tele/i3/inside/media-lab/lights/STATE", 'ledNum':71, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
@@ -268,7 +268,10 @@ deviceList = [
     {'topic': "tele/i3/inside/laser-zone/wolverine/laser/STATE", 'ledNum':84, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "stat/i3/inside/small-bathroom/light/POWER", 'ledNum':70, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "tele/i3/inside/small-bathroom/light/LWT", 'ledNum':70, 'itemState': State.UNKNOWN, 'onState': "Online", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
-    {'topic': "tele/i3/inside/small-bathroom/light/STATE", 'ledNum':70, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False}
+    {'topic': "tele/i3/inside/small-bathroom/light/STATE", 'ledNum':70, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
+    {'topic': "stat/i3/inside/commons/accent/disco-spotlights/POWER", 'ledNum':75, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
+    {'topic': "tele/i3/inside/commons/accent/disco-spotlights/LWT", 'ledNum':75, 'itemState': State.UNKNOWN, 'onState': "Online", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
+    {'topic': "tele/i3/inside/commons/accent/disco-spotlights/STATE", 'ledNum':75, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False}
 ]
 
 pubList = [
@@ -339,9 +342,7 @@ pubList = [
     "cmnd/i3/inside/craftroom/light/POWER",
     "cmnd/i3/inside/elab/light/POWER",
     "cmnd/i3/inside/hallway/light/POWER",
-    "cmnd/i3/inside/laser-zone/bumblebee/laser/POWER",
-    "cmnd/i3/inside/laser-zone/wolverine/laser/POWER",
-    "cmnd/i3/inside/small-bathroom/light/POWER"
+    "cmnd/i3/inside/commons/accent/disco-spotlights/POWER"
 ]
 
 for item in deviceList:
