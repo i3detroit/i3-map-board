@@ -271,7 +271,22 @@ deviceList = [
     {'topic': "tele/i3/inside/small-bathroom/light/STATE", 'ledNum':70, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "stat/i3/inside/commons/accent/disco-spotlights/POWER", 'ledNum':75, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "tele/i3/inside/commons/accent/disco-spotlights/LWT", 'ledNum':75, 'itemState': State.UNKNOWN, 'onState': "Online", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
-    {'topic': "tele/i3/inside/commons/accent/disco-spotlights/STATE", 'ledNum':75, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False}
+    {'topic': "tele/i3/inside/commons/accent/disco-spotlights/STATE", 'ledNum':75, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
+    {'topic': "stat/i3/inside/dooridor/lights/POWER", 'ledNum':9, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
+    {'topic': "tele/i3/inside/dooridor/lights/LWT", 'ledNum':9, 'itemState': State.UNKNOWN, 'onState': "Online", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
+    {'topic': "tele/i3/inside/dooridor/lights/STATE", 'ledNum':9, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
+    {'topic': "stat/i3/inside/classroom/lights-east/POWER", 'ledNum':11, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
+    {'topic': "tele/i3/inside/classroom/lights-east/LWT", 'ledNum':11, 'itemState': State.UNKNOWN, 'onState': "Online", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
+    {'topic': "tele/i3/inside/classroom/lights-east/STATE", 'ledNum':11, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
+    {'topic': "tele/i3/inside/classroom/lights-west/LWT", 'ledNum':72, 'itemState': State.UNKNOWN, 'onState': "Online", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
+    {'topic': "stat/i3/inside/classroom/lights-west/POWER", 'ledNum':72, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
+    {'topic': "tele/i3/inside/classroom/lights-west/STATE", 'ledNum':72, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
+    {'topic': "stat/i3/inside/small-bathroom/shower-light/POWER", 'ledNum':78, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
+    {'topic': "tele/i3/inside/small-bathroom/shower-light/LWT", 'ledNum':78, 'itemState': State.UNKNOWN, 'onState': "Online", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
+    {'topic': "tele/i3/inside/small-bathroom/shower-light/STATE", 'ledNum':78, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
+    {'topic': "stat/i3/inside/small-bathroom/vent/POWER", 'ledNum':79, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
+    {'topic': "tele/i3/inside/small-bathroom/vent/LWT", 'ledNum':79, 'itemState': State.UNKNOWN, 'onState': "Online", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
+    {'topic': "tele/i3/inside/small-bathroom/vent/STATE", 'ledNum':79, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False}
 ]
 
 pubList = [
@@ -342,7 +357,12 @@ pubList = [
     "cmnd/i3/inside/craftroom/light/POWER",
     "cmnd/i3/inside/elab/light/POWER",
     "cmnd/i3/inside/hallway/light/POWER",
-    "cmnd/i3/inside/commons/accent/disco-spotlights/POWER"
+    "cmnd/i3/inside/commons/accent/disco-spotlights/POWER",
+    "cmnd/i3/inside/dooridor/lights/POWER",
+    "cmnd/i3/inside/classroom/lights-east/POWER",
+    "cmnd/i3/inside/classroom/lights-west/POWER",
+    "cmnd/i3/inside/small-bathroom/shower-light/POWER",
+    "cmnd/i3/inside/small-bathroom/vent/POWER"
 ]
 
 for item in deviceList:
