@@ -114,6 +114,7 @@ deviceList = [
     {'topic': "stat/i3/inside/machine-shop/ceiling-fan/POWER", 'ledNum':26, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':None},
     {'topic': "stat/i3/inside/media-lab/lights/POWER", 'ledNum':71, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "tele/i3/inside/commons/openevse/state", 'ledNum':13, 'itemState': State.UNKNOWN, 'onState':3, 'offState':1, 'offType':State.OFF, 'alwaysOn':False},
+    {'topic': "tele/i3/inside/commons/openevse/state", 'ledNum':13, 'itemState': State.UNKNOWN, 'onState':"placeholder", 'offState':2, 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "tele/i3/inside/commons/openevse", 'ledNum':13, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "disconnected", 'offType':State.DISCONNECTED, 'alwaysOn':False},
     {'topic': "tele/i3/inside/commons/snapple-vending-light/LWT", 'ledNum':33, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':True},
     {'topic': "tele/i3/inside/accent/chandelier-01/LWT", 'ledNum':38, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
@@ -375,7 +376,8 @@ pubList = [
     "cmnd/i3/inside/small-bathroom/vent/POWER",
     "cmnd/i3/inside/tool-crib/workbench-lights/POWER",
     "cmnd/i3/inside/elab/accent/arch-north/POWER",
-    "cmnd/i3/inside/elab/accent/arch-south/POWER"
+    "cmnd/i3/inside/elab/accent/arch-south/POWER",
+    "cmnd/i3/inside/commons/front-door/lock"
 ]
 
 for item in deviceList:
