@@ -286,7 +286,17 @@ deviceList = [
     {'topic': "tele/i3/inside/small-bathroom/shower-light/STATE", 'ledNum':78, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "stat/i3/inside/small-bathroom/vent/POWER", 'ledNum':79, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "tele/i3/inside/small-bathroom/vent/LWT", 'ledNum':79, 'itemState': State.UNKNOWN, 'onState': "Online", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
-    {'topic': "tele/i3/inside/small-bathroom/vent/STATE", 'ledNum':79, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False}
+    {'topic': "tele/i3/inside/small-bathroom/vent/STATE", 'ledNum':79, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
+    {'topic': "stat/i3/inside/tool-crib/workbench-lights/POWER", 'ledNum':86, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
+    {'topic': "tele/i3/inside/tool-crib/workbench-lights/LWT", 'ledNum':86, 'itemState': State.UNKNOWN, 'onState': "Online", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
+    {'topic': "tele/i3/inside/tool-crib/workbench-lights/STATE", 'ledNum':86, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
+    {'topic': "stat/i3/inside/elab/accent/arch-north/POWER", 'ledNum':87, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':None},
+    {'topic': "tele/i3/inside/elab/accent/arch-north/LWT", 'ledNum':87, 'itemState': State.UNKNOWN, 'onState': "Online", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':None},
+    {'topic': "tele/i3/inside/elab/accent/arch-north/STATE", 'ledNum':87, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':None},
+    {'topic': "stat/i3/inside/elab/accent/arch-south/POWER", 'ledNum':88, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':None},
+    {'topic': "tele/i3/inside/elab/accent/arch-south/LWT", 'ledNum':88, 'itemState': State.UNKNOWN, 'onState': "Online", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':None},
+    {'topic': "tele/i3/inside/elab/accent/arch-south/STATE", 'ledNum':88, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':None},
+    {'topic': "stat/i3/inside/commons/front-door/lock", 'ledNum':89, 'itemState': State.UNKNOWN, 'onState': "LOCKED", 'offState': "UNLOCKED", 'offType':State.OFF, 'alwaysOn':True}
 ]
 
 pubList = [
@@ -362,7 +372,10 @@ pubList = [
     "cmnd/i3/inside/classroom/lights-east/POWER",
     "cmnd/i3/inside/classroom/lights-west/POWER",
     "cmnd/i3/inside/small-bathroom/shower-light/POWER",
-    "cmnd/i3/inside/small-bathroom/vent/POWER"
+    "cmnd/i3/inside/small-bathroom/vent/POWER",
+    "cmnd/i3/inside/tool-crib/workbench-lights/POWER",
+    "cmnd/i3/inside/elab/accent/arch-north/POWER",
+    "cmnd/i3/inside/elab/accent/arch-south/POWER"
 ]
 
 for item in deviceList:
