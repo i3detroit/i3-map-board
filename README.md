@@ -8,4 +8,4 @@ items_list.ods is a spreadsheet to clearly store and generate the MQTT items lis
 
 Initially written for arduino to run on an esp8266, then rewritten in python for a pi. The arduino version does not fully function, due to problems subscribing to too many MQTT topics.
 
-<img src="https://www.i3detroit.org/wi/images/d/d5/IoT_map.jpg" alt="The map" width="400">
+<img src="https://www.i3detroit.org/wi/images/thumb/d/d5/IoT_map.jpg/768px-IoT_map.jpg" alt="The map" width="400">
