@@ -1,6 +1,8 @@
 # i3-map-board
 Display for device statuses such as lights, fans, etc.
 
+https://www.i3detroit.org/wiki/MQTT_Space_Map
+
 Via MQTT, subscribes to status and telemetry messages from light fixtures, door sensors, exhaust fans, disco balls, etc.  and then outputs device states to LEDs
 
 i3_map_board.py is designed to run on a Raspberry Pi Zero W with neopixels/WS281X on pin 18.
