@@ -7,3 +7,5 @@ i3_map_board.py is designed to run on a Raspberry Pi Zero W with neopixels/WS281
 items_list.ods is a spreadsheet to clearly store and generate the MQTT items list dictionary. Add items and then copy the whole thing back into the pyhton script.
 
 Initially written for arduino to run on an esp8266, then rewritten in python for a pi. The arduino version does not fully function, due to problems subscribing to too many MQTT topics.
+
+<img src="https://www.i3detroit.org/wi/images/d/d5/IoT_map.jpg" alt="The map" width="400">
