@@ -25,7 +25,7 @@ alwaysOnColor = Color(25 * brightness, 10 * brightness, 0)  # amber
 unknownColor = Color(25 * brightness, 0, 18 * brightness)  # purple
 onColor = Color(0, 25 * brightness, 0)                          # green
 offColor = Color(0, 0, 25 * brightness)                         # blue
-# ledDark = Color(0,0,0)
+ledDark = Color(0,0,0)
 
 
 class State(Enum):
@@ -33,6 +33,7 @@ class State(Enum):
     ON = 2
     DISCONNECTED = 3
     UNKNOWN = 4
+    BLANK = 5
 
 
 # Map legend
@@ -56,7 +57,7 @@ strip.setPixelColor(5, disconnectedColor)
 deviceList = [
     {'topic': "stat/i3/inside/classroom/glass-door/lock", 'ledNum':6, 'itemState': State.UNKNOWN, 'onState': "LOCKED", 'offState': "UNLOCKED", 'offType':State.OFF, 'alwaysOn':True},
     {'topic': "stat/i3/inside/classroom/glass-door/open", 'ledNum':7, 'itemState': State.UNKNOWN, 'onState': "CLOSED", 'offState': "OPEN", 'offType':State.OFF, 'alwaysOn':True},
-    {'topic': "stat/i3/inside/commons/snapple-vending-light/POWER", 'ledNum':33, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':True},
+    {'topic': "stat/i3/inside/commons/snapple-vending-light/POWER", 'ledNum':33, 'itemState': State.BLANK, 'onState': "ON", 'offState': "OFF", 'offType':State.BLANK, 'alwaysOn':True},
     {'topic': "stat/i3/inside/accent/chandelier-01/POWER", 'ledNum':38, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "stat/i3/inside/accent/chandelier-02/POWER", 'ledNum':73, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "stat/i3/inside/classroom/sign/POWER", 'ledNum':8, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':None},
@@ -94,7 +95,7 @@ deviceList = [
     {'topic': "stat/i3/inside/lights/021/POWER", 'ledNum':57, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "stat/i3/inside/lights/022/POWER", 'ledNum':55, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "stat/i3/inside/lights/023/POWER", 'ledNum':52, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
-    {'topic': "stat/i3/inside/lights/024/POWER", 'ledNum':51, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
+    {'topic': "stat/i3/inside/lights/024/POWER", 'ledNum':51, 'itemState': State.BLANK, 'onState': "ON", 'offState': "OFF", 'offType':State.BLANK, 'alwaysOn':False},
     {'topic': "stat/i3/inside/lights/025/POWER", 'ledNum':47, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "stat/i3/inside/lights/026/POWER", 'ledNum':48, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "stat/i3/inside/lights/027/POWER", 'ledNum':64, 'itemState': State.UNKNOWN, 'onState': "ON", 'offState': "OFF", 'offType':State.OFF, 'alwaysOn':True},
@@ -116,7 +117,7 @@ deviceList = [
     {'topic': "tele/i3/inside/commons/openevse/state", 'ledNum':13, 'itemState': State.UNKNOWN, 'onState':3, 'offState':1, 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "tele/i3/inside/commons/openevse/state", 'ledNum':13, 'itemState': State.UNKNOWN, 'onState':"placeholder", 'offState':2, 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "tele/i3/inside/commons/openevse", 'ledNum':13, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "disconnected", 'offType':State.DISCONNECTED, 'alwaysOn':False},
-    {'topic': "tele/i3/inside/commons/snapple-vending-light/LWT", 'ledNum':33, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':True},
+    {'topic': "tele/i3/inside/commons/snapple-vending-light/LWT", 'ledNum':33, 'itemState': State.BLANK, 'onState': "placeholder", 'offState': "Offline", 'offType':State.BLANK, 'alwaysOn':True},
     {'topic': "tele/i3/inside/accent/chandelier-01/LWT", 'ledNum':38, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
     {'topic': "tele/i3/inside/accent/chandelier-02/LWT", 'ledNum':73, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
     {'topic': "tele/i3/inside/classroom/sign/LWT", 'ledNum':8, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':None},
@@ -153,7 +154,7 @@ deviceList = [
     {'topic': "tele/i3/inside/lights/021/LWT", 'ledNum':57, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
     {'topic': "tele/i3/inside/lights/022/LWT", 'ledNum':55, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
     {'topic': "tele/i3/inside/lights/023/LWT", 'ledNum':52, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
-    {'topic': "tele/i3/inside/lights/024/LWT", 'ledNum':51, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
+    {'topic': "tele/i3/inside/lights/024/LWT", 'ledNum':51, 'itemState': State.BLANK, 'onState': "placeholder", 'offState': "Offline", 'offType':State.BLANK, 'alwaysOn':False},
     {'topic': "tele/i3/inside/lights/025/LWT", 'ledNum':47, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
     {'topic': "tele/i3/inside/lights/026/LWT", 'ledNum':48, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
     {'topic': "tele/i3/inside/lights/027/LWT", 'ledNum':64, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':True},
@@ -172,7 +173,7 @@ deviceList = [
     {'topic': "tele/i3/inside/laser-zone/vent-fan/LWT", 'ledNum':54, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
     {'topic': "tele/i3/inside/machine-shop/ceiling-fan/LWT", 'ledNum':26, 'itemState': State.UNKNOWN, 'onState': "placeholder", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':None},
     {'topic': "tele/i3/inside/media-lab/lights/LWT", 'ledNum':71, 'itemState': State.UNKNOWN, 'onState': "Online", 'offState': "Offline", 'offType':State.DISCONNECTED, 'alwaysOn':False},
-    {'topic': "tele/i3/inside/commons/snapple-vending-light/STATE", 'ledNum':33, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':True},
+    {'topic': "tele/i3/inside/commons/snapple-vending-light/STATE", 'ledNum':33, 'itemState': State.BLANK, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.BLANK, 'alwaysOn':True},
     {'topic': "tele/i3/inside/accent/chandelier-01/STATE", 'ledNum':38, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "tele/i3/inside/accent/chandelier-02/STATE", 'ledNum':73, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "tele/i3/inside/classroom/sign/STATE", 'ledNum':8, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':None},
@@ -209,7 +210,7 @@ deviceList = [
     {'topic': "tele/i3/inside/lights/021/STATE", 'ledNum':57, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "tele/i3/inside/lights/022/STATE", 'ledNum':55, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "tele/i3/inside/lights/023/STATE", 'ledNum':52, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
-    {'topic': "tele/i3/inside/lights/024/STATE", 'ledNum':51, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
+    {'topic': "tele/i3/inside/lights/024/STATE", 'ledNum':51, 'itemState': State.BLANK, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.BLANK, 'alwaysOn':False},
     {'topic': "tele/i3/inside/lights/025/STATE", 'ledNum':47, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "tele/i3/inside/lights/026/STATE", 'ledNum':48, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':False},
     {'topic': "tele/i3/inside/lights/027/STATE", 'ledNum':64, 'itemState': State.UNKNOWN, 'onState': "\"POWER\":\"ON\"", 'offState': "\"POWER\":\"OFF\"", 'offType':State.OFF, 'alwaysOn':True},
