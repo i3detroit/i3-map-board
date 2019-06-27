@@ -444,6 +444,8 @@ def on_message(client, userdata, msg):
                         strip.setPixelColor(device['ledNum'], onColor)
                 elif device['itemState'] == State.DISCONNECTED:
                     strip.setPixelColor(device['ledNum'], disconnectedColor)
+                elif device['itemState'] == State.BLANK:
+                    strip.setPixelColor(device['ledNum'], ledDark)
                 strip.show()
                 time.sleep(wait_ms / 1000.0)
 
