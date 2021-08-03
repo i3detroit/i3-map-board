@@ -1,0 +1,1480 @@
+- leds: [6]
+  query_command: cmnd/i3/inside/classroom/glass-door/lock
+  topics:
+  - topic: stat/i3/inside/classroom/glass-door/lock
+    payloads:
+    - payload: LOCKED
+      led_state: on_good
+    - payload: UNLOCKED
+      led_state: off_bad
+- leds: [7]
+  query_command: cmnd/i3/inside/classroom/glass-door/open
+  topics:
+  - topic: stat/i3/inside/classroom/glass-door/open
+    payloads:
+    - payload: CLOSED
+      led_state: on_good
+    - payload: OPEN
+      led_state: off_bad
+- leds: [8]
+  query_command: cmnd/i3/inside/classroom/sign/POWER
+  topics:
+  - topic: stat/i3/inside/classroom/sign/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_good
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/classroom/sign/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/classroom/sign/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_good
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [9]
+  query_command: cmnd/i3/inside/dooridor/lights/POWER
+  topics:
+  - topic: stat/i3/inside/dooridor/lights/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/dooridor/lights/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/dooridor/lights/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [10]
+  query_command: cmnd/i3/inside/craftroom/light/POWER
+  topics:
+  - topic: stat/i3/inside/craftroom/light/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/craftroom/light/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/craftroom/light/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [11]
+  query_command: cmnd/i3/inside/classroom/lights-east/POWER
+  topics:
+  - topic: stat/i3/inside/classroom/lights-east/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/classroom/lights-east/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/classroom/lights-east/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [12]
+  query_command: cmnd/i3/inside/commons/garage-door/lock
+  topics:
+  - topic: stat/i3/inside/commons/garage-door/lock
+    payloads:
+    - payload: LOCKED
+      led_state: on_good
+    - payload: UNLOCKED
+      led_state: off_bad
+- leds: [13]
+  query_command: tele/i3/inside/commons/openevse/query
+  topics:
+  - topic: tele/i3/inside/commons/openevse/state
+    payloads:
+    - payload: '3'
+      led_state: on_bad
+    - payload: '1'
+      led_state: off_good
+  - topic: tele/i3/inside/commons/openevse/state
+    payloads:
+    - payload: placeholder
+      led_state: on_bad
+    - payload: '2'
+      led_state: off_good
+  - topic: tele/i3/inside/commons/openevse
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+- leds: [14]
+  query_command: cmnd/i3/inside/lights/005/POWER
+  topics:
+  - topic: stat/i3/inside/lights/005/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/005/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/005/STATE
+    payloads:
+    - payload: '{.*"POWER":"ON".*}\n?'
+      led_state: on_bad
+    - payload: '{.*"POWER":"OFF".*}\n?'
+      led_state: off_good
+- leds: [15]
+  query_command: cmnd/i3/inside/lights/001/POWER
+  topics:
+  - topic: stat/i3/inside/lights/001/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/001/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/001/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [16]
+  query_command: cmnd/i3/inside/lights/028/POWER
+  topics:
+  - topic: stat/i3/inside/lights/028/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/028/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/028/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [17]
+  query_command: cmnd/i3/inside/lights/002/POWER
+  topics:
+  - topic: stat/i3/inside/lights/002/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/002/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/002/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [18]
+  query_command: cmnd/i3/inside/lights/003/POWER
+  topics:
+  - topic: stat/i3/inside/lights/003/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/003/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/003/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [19]
+  query_command: cmnd/i3/inside/lights/004/POWER
+  topics:
+  - topic: stat/i3/inside/lights/004/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/004/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/004/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [20]
+  query_command: cmnd/i3/inside/cnc/vent/POWER
+  topics:
+  - topic: stat/i3/inside/cnc/vent/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_good
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/cnc/vent/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/cnc/vent/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_good
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [21]
+  query_command: cmnd/i3/inside/cnc/light/POWER
+  topics:
+  - topic: stat/i3/inside/cnc/light/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/cnc/light/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/cnc/light/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [22]
+  query_command: cmnd/i3/inside/lights/029/POWER
+  topics:
+  - topic: stat/i3/inside/lights/029/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/029/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/029/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [23]
+  query_command: cmnd/i3/inside/lights/030/POWER
+  topics:
+  - topic: stat/i3/inside/lights/030/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/030/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/030/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [24]
+  query_command: cmnd/i3/inside/lights/032/POWER
+  topics:
+  - topic: stat/i3/inside/lights/032/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/032/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/032/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [25]
+  query_command: cmnd/i3/inside/lights/031/POWER
+  topics:
+  - topic: stat/i3/inside/lights/031/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/031/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/031/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [26]
+  query_command: cmnd/i3/inside/machine-shop/ceiling-fan/POWER
+  topics:
+  - topic: stat/i3/inside/machine-shop/ceiling-fan/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_good
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/machine-shop/ceiling-fan/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/machine-shop/ceiling-fan/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_good
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [27]
+  query_command: cmnd/i3/inside/lights/009/POWER
+  topics:
+  - topic: stat/i3/inside/lights/009/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/009/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/009/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [28, 32]
+  query_command: cmnd/i3/inside/commons/ceiling-fans/POWER
+  topics:
+  - topic: stat/i3/inside/commons/ceiling-fans/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_good
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/commons/ceiling-fans/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/commons/ceiling-fans/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_good
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [29]
+  query_command: cmnd/i3/inside/lights/008/POWER
+  topics:
+  - topic: stat/i3/inside/lights/008/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/008/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/008/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [30]
+  query_command: cmnd/i3/inside/lights/007/POWER
+  topics:
+  - topic: stat/i3/inside/lights/007/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/007/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/007/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [31]
+  query_command: cmnd/i3/inside/lights/006/POWER
+  topics:
+  - topic: stat/i3/inside/lights/006/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/006/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/006/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [33]
+  query_command: cmnd/i3/inside/commons/snapple-vending-light/POWER
+  topics:
+  - topic: stat/i3/inside/commons/snapple-vending-light/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_good
+    - payload: 'OFF'
+      led_state: off_bad
+  - topic: tele/i3/inside/commons/snapple-vending-light/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/commons/snapple-vending-light/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_good
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_bad
+- leds: [34]
+  query_command: cmnd/i3/inside/lights/010/POWER
+  topics:
+  - topic: stat/i3/inside/lights/010/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/010/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/010/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [35]
+  query_command: cmnd/i3/inside/lights/011/POWER
+  topics:
+  - topic: stat/i3/inside/lights/011/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/011/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/011/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [36]
+  query_command: cmnd/i3/inside/commons/disco/POWER
+  topics:
+  - topic: stat/i3/inside/commons/disco/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/commons/disco/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/commons/disco/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [37]
+  query_command: cmnd/i3/inside/lights/012/POWER
+  topics:
+  - topic: stat/i3/inside/lights/012/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/012/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/012/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [38]
+  query_command: cmnd/i3/inside/accent/chandelier-01/POWER
+  topics:
+  - topic: stat/i3/inside/accent/chandelier-01/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/accent/chandelier-01/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/accent/chandelier-01/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [39]
+  query_command: cmnd/i3/inside/lights/013/POWER
+  topics:
+  - topic: stat/i3/inside/lights/013/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/013/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/013/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [40]
+  query_command: cmnd/i3/inside/lights/014/POWER
+  topics:
+  - topic: stat/i3/inside/lights/014/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/014/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/014/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [41]
+  query_command: cmnd/i3/inside/lights/035/POWER
+  topics:
+  - topic: stat/i3/inside/lights/035/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/035/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/035/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [42]
+  query_command: cmnd/i3/inside/lights/034/POWER
+  topics:
+  - topic: stat/i3/inside/lights/034/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/034/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/034/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [43]
+  query_command: cmnd/i3/inside/lights/033/POWER
+  topics:
+  - topic: stat/i3/inside/lights/033/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/033/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/033/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [44]
+  query_command: cmnd/i3/inside/infrastructure/air-compressor/POWER
+  topics:
+  - topic: stat/i3/inside/infrastructure/air-compressor/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/infrastructure/air-compressor/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/infrastructure/air-compressor/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [45]
+  query_command: cmnd/i3/inside/infrastructure/compressor-valve/POWER
+  topics:
+  - topic: stat/i3/inside/infrastructure/compressor-valve/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/infrastructure/compressor-valve/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/infrastructure/compressor-valve/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [46]
+  query_command: cmnd/i3/inside/lights/019/POWER
+  topics:
+  - topic: stat/i3/inside/lights/019/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/019/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/019/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [47]
+  query_command: cmnd/i3/inside/lights/025/POWER
+  topics:
+  - topic: stat/i3/inside/lights/025/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/025/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/025/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [48]
+  query_command: cmnd/i3/inside/lights/026/POWER
+  topics:
+  - topic: stat/i3/inside/lights/026/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/026/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/026/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [49]
+  query_command: cmnd/i3/inside/lights/018/POWER
+  topics:
+  - topic: stat/i3/inside/lights/018/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/018/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/018/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [50]
+  query_command: cmnd/i3/inside/lights/017/POWER
+  topics:
+  - topic: stat/i3/inside/lights/017/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/017/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/017/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [51]
+  query_command: cmnd/i3/inside/lights/024/POWER
+  topics:
+  - topic: stat/i3/inside/lights/024/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/024/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/024/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [52]
+  query_command: cmnd/i3/inside/lights/023/POWER
+  topics:
+  - topic: stat/i3/inside/lights/023/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/023/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/023/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [53]
+  query_command: cmnd/i3/inside/lights/016/POWER
+  topics:
+  - topic: stat/i3/inside/lights/016/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/016/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/016/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [54]
+  query_command: cmnd/i3/inside/laser-zone/vent-fan/POWER
+  topics:
+  - topic: stat/i3/inside/laser-zone/vent-fan/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/laser-zone/vent-fan/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/laser-zone/vent-fan/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [55]
+  query_command: cmnd/i3/inside/lights/022/POWER
+  topics:
+  - topic: stat/i3/inside/lights/022/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/022/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/022/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [56]
+  query_command: cmnd/i3/inside/lights/036/POWER
+  topics:
+  - topic: stat/i3/inside/lights/036/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/036/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/036/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [57]
+  query_command: cmnd/i3/inside/lights/021/POWER
+  topics:
+  - topic: stat/i3/inside/lights/021/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/021/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/021/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [58]
+  query_command: cmnd/i3/inside/laser-zone/ceiling-fan/POWER
+  topics:
+  - topic: stat/i3/inside/laser-zone/ceiling-fan/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_good
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/laser-zone/ceiling-fan/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/laser-zone/ceiling-fan/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_good
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [59]
+  query_command: cmnd/i3/inside/lights/037/POWER
+  topics:
+  - topic: stat/i3/inside/lights/037/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/037/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/037/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [60]
+  query_command: cmnd/i3/inside/fablab/chiller/POWER
+  topics:
+  - topic: stat/i3/inside/fablab/chiller/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/fablab/chiller/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/fablab/chiller/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [61]
+  query_command: cmnd/i3/inside/commons/south-vent/POWER
+  topics:
+  - topic: stat/i3/inside/commons/south-vent/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_good
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/commons/south-vent/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/commons/south-vent/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_good
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [62]
+  query_command: cmnd/i3/inside/lights/015/POWER
+  topics:
+  - topic: stat/i3/inside/lights/015/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/015/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/015/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [63]
+  query_command: cmnd/i3/inside/lights/020/POWER
+  topics:
+  - topic: stat/i3/inside/lights/020/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/lights/020/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/020/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [64]
+  query_command: cmnd/i3/inside/lights/027/POWER
+  topics:
+  - topic: stat/i3/inside/lights/027/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_good
+    - payload: 'OFF'
+      led_state: off_bad
+  - topic: tele/i3/inside/lights/027/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/027/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_good
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_bad
+- leds: [65]
+  query_command: cmnd/i3/inside/large-bathroom/light/POWER
+  topics:
+  - topic: stat/i3/inside/large-bathroom/light/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/large-bathroom/light/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/large-bathroom/light/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [66]
+  query_command: cmnd/i3/inside/large-bathroom/vent/POWER
+  topics:
+  - topic: stat/i3/inside/large-bathroom/vent/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/large-bathroom/vent/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/large-bathroom/vent/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [67, 81, 82]
+  query_command: cmnd/i3/inside/elab/light/POWER
+  topics:
+  - topic: stat/i3/inside/elab/light/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/elab/light/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/elab/light/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [68, 69]
+  query_command: cmnd/i3/inside/hallway/light/POWER
+  topics:
+  - topic: stat/i3/inside/hallway/light/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/hallway/light/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/hallway/light/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [70]
+  query_command: cmnd/i3/inside/small-bathroom/light/POWER
+  topics:
+  - topic: stat/i3/inside/small-bathroom/light/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/small-bathroom/light/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/small-bathroom/light/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [71]
+  query_command: cmnd/i3/inside/media-lab/lights/POWER
+  topics:
+  - topic: stat/i3/inside/media-lab/lights/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/media-lab/lights/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/media-lab/lights/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [72]
+  query_command: cmnd/i3/inside/classroom/lights-west/POWER
+  topics:
+  - topic: tele/i3/inside/classroom/lights-west/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: stat/i3/inside/classroom/lights-west/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/classroom/lights-west/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [73]
+  query_command: cmnd/i3/inside/accent/chandelier-02/POWER
+  topics:
+  - topic: stat/i3/inside/accent/chandelier-02/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/accent/chandelier-02/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/accent/chandelier-02/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [74]
+  query_command: cmnd/i3/inside/commons/paint-box/POWER
+  topics:
+  - topic: stat/i3/inside/commons/paint-box/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/commons/paint-box/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/commons/paint-box/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [75]
+  query_command: cmnd/i3/inside/commons/accent/disco-spotlights/POWER
+  topics:
+  - topic: stat/i3/inside/commons/accent/disco-spotlights/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/commons/accent/disco-spotlights/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/commons/accent/disco-spotlights/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [76]
+  query_command: cmnd/i3/inside/fablab/vent/POWER
+  topics:
+  - topic: stat/i3/inside/fablab/vent/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/fablab/vent/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/fablab/vent/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [77]
+  query_command: cmnd/i3/inside/lights/039/POWER
+  topics:
+  - topic: stat/i3/inside/lights/039/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_good
+    - payload: 'OFF'
+      led_state: off_bad
+  - topic: tele/i3/inside/lights/039/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/039/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_good
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_bad
+- leds: [78]
+  query_command: cmnd/i3/inside/small-bathroom/shower-light/POWER
+  topics:
+  - topic: stat/i3/inside/small-bathroom/shower-light/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/small-bathroom/shower-light/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/small-bathroom/shower-light/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [79]
+  query_command: cmnd/i3/inside/small-bathroom/vent/POWER
+  topics:
+  - topic: stat/i3/inside/small-bathroom/vent/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/small-bathroom/vent/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/small-bathroom/vent/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [80]
+  query_command: cmnd/i3/inside/lights/038/POWER
+  topics:
+  - topic: stat/i3/inside/lights/038/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_good
+    - payload: 'OFF'
+      led_state: off_bad
+  - topic: tele/i3/inside/lights/038/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/038/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_good
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_bad
+- leds: [83]
+  query_command: cmnd/i3/inside/laser-zone/bumblebee/laser/POWER
+  topics:
+  - topic: stat/i3/inside/laser-zone/bumblebee/laser/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/laser-zone/bumblebee/laser/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/laser-zone/bumblebee/laser/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [84]
+  query_command: cmnd/i3/inside/laser-zone/wolverine/laser/POWER
+  topics:
+  - topic: stat/i3/inside/laser-zone/wolverine/laser/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/laser-zone/wolverine/laser/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/laser-zone/wolverine/laser/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [85]
+  query_command: cmnd/i3/inside/lights/040/POWER
+  topics:
+  - topic: stat/i3/inside/lights/040/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_good
+    - payload: 'OFF'
+      led_state: off_bad
+  - topic: tele/i3/inside/lights/040/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/lights/040/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_good
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_bad
+- leds: [86]
+  query_command: cmnd/i3/inside/tool-crib/workbench-lights/POWER
+  topics:
+  - topic: stat/i3/inside/tool-crib/workbench-lights/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_bad
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/tool-crib/workbench-lights/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/tool-crib/workbench-lights/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_bad
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [87]
+  query_command: cmnd/i3/inside/elab/accent/arch-north/POWER
+  topics:
+  - topic: stat/i3/inside/elab/accent/arch-north/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_good
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/elab/accent/arch-north/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/elab/accent/arch-north/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_good
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [88]
+  query_command: cmnd/i3/inside/elab/accent/arch-south/POWER
+  topics:
+  - topic: stat/i3/inside/elab/accent/arch-south/POWER
+    payloads:
+    - payload: 'ON'
+      led_state: on_good
+    - payload: 'OFF'
+      led_state: off_good
+  - topic: tele/i3/inside/elab/accent/arch-south/LWT
+    payloads:
+    - payload: Offline
+      led_state: disconnected
+  - topic: tele/i3/inside/elab/accent/arch-south/STATE
+    payloads:
+    - payload: '\{.*"POWER":"ON".*\}\n?'
+      led_state: on_good
+    - payload: '\{.*"POWER":"OFF".*\}\n?'
+      led_state: off_good
+- leds: [89]
+  query_command: cmnd/i3/inside/commons/front-door/lock
+  topics:
+  - topic: stat/i3/inside/commons/front-door/lock
+    payloads:
+    - payload: LOCKED
+      led_state: on_good
+    - payload: UNLOCKED
+      led_state: off_bad

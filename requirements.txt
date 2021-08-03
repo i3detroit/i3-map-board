@@ -1,0 +1,4 @@
+paho-mqtt
+pyyaml
+rpi_ws281x
+adafruit-circuitpython-neopixel
